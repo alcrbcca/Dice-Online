@@ -3,29 +3,47 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		073E7A72F868580986312C5F /* Pods_DiceOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5000AE5CF702F03F311F12B4 /* Pods_DiceOnline.framework */; };
 		AD0C511322C623E500AADC4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0C511222C623E500AADC4D /* AppDelegate.swift */; };
 		AD0C511522C623E500AADC4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0C511422C623E500AADC4D /* SceneDelegate.swift */; };
-		AD0C511722C623E500AADC4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0C511622C623E500AADC4D /* ViewController.swift */; };
+		AD0C511722C623E500AADC4D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0C511622C623E500AADC4D /* GameViewController.swift */; };
 		AD0C511A22C623E500AADC4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD0C511822C623E500AADC4D /* Main.storyboard */; };
 		AD0C511C22C623E700AADC4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD0C511B22C623E700AADC4D /* Assets.xcassets */; };
 		AD0C511F22C623E700AADC4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD0C511D22C623E700AADC4D /* LaunchScreen.storyboard */; };
 		AD0C512922C6276D00AADC4D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AD0C512822C6276D00AADC4D /* README.md */; };
+		E81A94A325C23F29009409AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81A94A225C23F29009409AD /* Constants.swift */; };
+		E8427B5125BE142C00DA2AD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8427B5025BE142C00DA2AD5 /* GoogleService-Info.plist */; };
+		E8A3F72525BDEB4800B13511 /* DiceOnlineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F72425BDEB4800B13511 /* DiceOnlineModel.swift */; };
+		E8A3F72B25BDECCD00B13511 /* NewRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F72A25BDECCD00B13511 /* NewRoomViewController.swift */; };
+		E8A3F72E25BDEE0400B13511 /* WatingRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F72D25BDEE0400B13511 /* WatingRoomViewController.swift */; };
+		E8AA770C25C39CAC00EA75CB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA770B25C39CAC00EA75CB /* FirstViewController.swift */; };
+		E8B9F26E25C765520010F05C /* JoinRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B9F26D25C765520010F05C /* JoinRoomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AD0C510F22C623E500AADC4D /* AutoLayout-iOS13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AutoLayout-iOS13.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		026C7CAE7EAAD5AA9FA9BC48 /* Pods-DiceOnline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiceOnline.release.xcconfig"; path = "Target Support Files/Pods-DiceOnline/Pods-DiceOnline.release.xcconfig"; sourceTree = "<group>"; };
+		0420922D4310BE80AEF7095C /* Pods-DiceOnline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiceOnline.debug.xcconfig"; path = "Target Support Files/Pods-DiceOnline/Pods-DiceOnline.debug.xcconfig"; sourceTree = "<group>"; };
+		5000AE5CF702F03F311F12B4 /* Pods_DiceOnline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiceOnline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD0C510F22C623E500AADC4D /* DiceOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiceOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0C511222C623E500AADC4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD0C511422C623E500AADC4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AD0C511622C623E500AADC4D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AD0C511622C623E500AADC4D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		AD0C511922C623E500AADC4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD0C511B22C623E700AADC4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD0C511E22C623E700AADC4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD0C512022C623E700AADC4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD0C512822C6276D00AADC4D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E81A94A225C23F29009409AD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E8427B5025BE142C00DA2AD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E8A3F72425BDEB4800B13511 /* DiceOnlineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceOnlineModel.swift; sourceTree = "<group>"; };
+		E8A3F72A25BDECCD00B13511 /* NewRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoomViewController.swift; sourceTree = "<group>"; };
+		E8A3F72D25BDEE0400B13511 /* WatingRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatingRoomViewController.swift; sourceTree = "<group>"; };
+		E8AA770B25C39CAC00EA75CB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		E8B9F26D25C765520010F05C /* JoinRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,61 +51,114 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				073E7A72F868580986312C5F /* Pods_DiceOnline.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38849E9225B20B33D6A563AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5000AE5CF702F03F311F12B4 /* Pods_DiceOnline.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6EDF19F2E4057C29822C6247 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0420922D4310BE80AEF7095C /* Pods-DiceOnline.debug.xcconfig */,
+				026C7CAE7EAAD5AA9FA9BC48 /* Pods-DiceOnline.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AD0C510622C623E500AADC4D = {
 			isa = PBXGroup;
 			children = (
 				AD0C512822C6276D00AADC4D /* README.md */,
-				AD0C511122C623E500AADC4D /* AutoLayout-iOS13 */,
+				AD0C511122C623E500AADC4D /* DiceOnline */,
 				AD0C511022C623E500AADC4D /* Products */,
+				6EDF19F2E4057C29822C6247 /* Pods */,
+				38849E9225B20B33D6A563AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		AD0C511022C623E500AADC4D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AD0C510F22C623E500AADC4D /* AutoLayout-iOS13.app */,
+				AD0C510F22C623E500AADC4D /* DiceOnline.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AD0C511122C623E500AADC4D /* AutoLayout-iOS13 */ = {
+		AD0C511122C623E500AADC4D /* DiceOnline */ = {
 			isa = PBXGroup;
 			children = (
 				AD0C511222C623E500AADC4D /* AppDelegate.swift */,
 				AD0C511422C623E500AADC4D /* SceneDelegate.swift */,
-				AD0C511622C623E500AADC4D /* ViewController.swift */,
-				AD0C511822C623E500AADC4D /* Main.storyboard */,
+				E8A3F72225BDEADA00B13511 /* Controller */,
+				E8A3F72125BDEA9C00B13511 /* View */,
+				E8A3F72725BDEB5500B13511 /* Model */,
 				AD0C511B22C623E700AADC4D /* Assets.xcassets */,
 				AD0C511D22C623E700AADC4D /* LaunchScreen.storyboard */,
 				AD0C512022C623E700AADC4D /* Info.plist */,
+				E8427B5025BE142C00DA2AD5 /* GoogleService-Info.plist */,
+				E81A94A225C23F29009409AD /* Constants.swift */,
 			);
-			path = "AutoLayout-iOS13";
+			path = DiceOnline;
+			sourceTree = "<group>";
+		};
+		E8A3F72125BDEA9C00B13511 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD0C511822C623E500AADC4D /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E8A3F72225BDEADA00B13511 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AD0C511622C623E500AADC4D /* GameViewController.swift */,
+				E8A3F72A25BDECCD00B13511 /* NewRoomViewController.swift */,
+				E8A3F72D25BDEE0400B13511 /* WatingRoomViewController.swift */,
+				E8AA770B25C39CAC00EA75CB /* FirstViewController.swift */,
+				E8B9F26D25C765520010F05C /* JoinRoomViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E8A3F72725BDEB5500B13511 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E8A3F72425BDEB4800B13511 /* DiceOnlineModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AD0C510E22C623E500AADC4D /* AutoLayout-iOS13 */ = {
+		AD0C510E22C623E500AADC4D /* DiceOnline */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD0C512322C623E700AADC4D /* Build configuration list for PBXNativeTarget "AutoLayout-iOS13" */;
+			buildConfigurationList = AD0C512322C623E700AADC4D /* Build configuration list for PBXNativeTarget "DiceOnline" */;
 			buildPhases = (
+				A06F54CD3D552738708330D7 /* [CP] Check Pods Manifest.lock */,
 				AD0C510B22C623E500AADC4D /* Sources */,
 				AD0C510C22C623E500AADC4D /* Frameworks */,
 				AD0C510D22C623E500AADC4D /* Resources */,
+				7B40A3925B91A8DD9BB92632 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "AutoLayout-iOS13";
+			name = DiceOnline;
 			productName = "AutoLayout-iOS13";
-			productReference = AD0C510F22C623E500AADC4D /* AutoLayout-iOS13.app */;
+			productReference = AD0C510F22C623E500AADC4D /* DiceOnline.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -97,15 +168,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
-				ORGANIZATIONNAME = "The App Brewery";
+				LastUpgradeCheck = 1240;
+				ORGANIZATIONNAME = alcrbcca;
 				TargetAttributes = {
 					AD0C510E22C623E500AADC4D = {
 						CreatedOnToolsVersion = 11.0;
 					};
 				};
 			};
-			buildConfigurationList = AD0C510A22C623E500AADC4D /* Build configuration list for PBXProject "AutoLayout-iOS13" */;
+			buildConfigurationList = AD0C510A22C623E500AADC4D /* Build configuration list for PBXProject "DiceOnline" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,7 +189,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AD0C510E22C623E500AADC4D /* AutoLayout-iOS13 */,
+				AD0C510E22C623E500AADC4D /* DiceOnline */,
 			);
 		};
 /* End PBXProject section */
@@ -130,6 +201,7 @@
 			files = (
 				AD0C511F22C623E700AADC4D /* LaunchScreen.storyboard in Resources */,
 				AD0C511C22C623E700AADC4D /* Assets.xcassets in Resources */,
+				E8427B5125BE142C00DA2AD5 /* GoogleService-Info.plist in Resources */,
 				AD0C512922C6276D00AADC4D /* README.md in Resources */,
 				AD0C511A22C623E500AADC4D /* Main.storyboard in Resources */,
 			);
@@ -137,14 +209,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7B40A3925B91A8DD9BB92632 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DiceOnline/Pods-DiceOnline-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DiceOnline/Pods-DiceOnline-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DiceOnline/Pods-DiceOnline-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A06F54CD3D552738708330D7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DiceOnline-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AD0C510B22C623E500AADC4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD0C511722C623E500AADC4D /* ViewController.swift in Sources */,
+				E8A3F72B25BDECCD00B13511 /* NewRoomViewController.swift in Sources */,
+				AD0C511722C623E500AADC4D /* GameViewController.swift in Sources */,
 				AD0C511322C623E500AADC4D /* AppDelegate.swift in Sources */,
+				E8AA770C25C39CAC00EA75CB /* FirstViewController.swift in Sources */,
 				AD0C511522C623E500AADC4D /* SceneDelegate.swift in Sources */,
+				E81A94A325C23F29009409AD /* Constants.swift in Sources */,
+				E8A3F72525BDEB4800B13511 /* DiceOnlineModel.swift in Sources */,
+				E8A3F72E25BDEE0400B13511 /* WatingRoomViewController.swift in Sources */,
+				E8B9F26E25C765520010F05C /* JoinRoomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +316,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -256,6 +377,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -286,15 +408,16 @@
 		};
 		AD0C512422C623E700AADC4D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0420922D4310BE80AEF7095C /* Pods-DiceOnline.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "AutoLayout-iOS13/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DiceOnline/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "co.appbrewery.AutoLayout-iOS13";
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.alcrbc-dice-online";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -303,15 +426,16 @@
 		};
 		AD0C512522C623E700AADC4D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 026C7CAE7EAAD5AA9FA9BC48 /* Pods-DiceOnline.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "AutoLayout-iOS13/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DiceOnline/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "co.appbrewery.AutoLayout-iOS13";
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.alcrbc-dice-online";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -321,7 +445,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AD0C510A22C623E500AADC4D /* Build configuration list for PBXProject "AutoLayout-iOS13" */ = {
+		AD0C510A22C623E500AADC4D /* Build configuration list for PBXProject "DiceOnline" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD0C512122C623E700AADC4D /* Debug */,
@@ -330,7 +454,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AD0C512322C623E700AADC4D /* Build configuration list for PBXNativeTarget "AutoLayout-iOS13" */ = {
+		AD0C512322C623E700AADC4D /* Build configuration list for PBXNativeTarget "DiceOnline" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD0C512422C623E700AADC4D /* Debug */,

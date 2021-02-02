@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:AutoLayout-iOS13.xcodeproj">
+      location = "self:/Users/user926704/Documents/Xcode Work/Dice-Online/DiceOnline.xcodeproj">
    </FileRef>
 </Workspace>
