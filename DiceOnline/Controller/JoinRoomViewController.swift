@@ -30,25 +30,43 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func joinButtonPressed(_ sender: UIButton) {
-    print("Join Button Pressed")
+        
+        if playerNameField.text != "" {
+            print("Join Button Pressed by player \(String(describing: playerNameField.text))")
+            
+            if let name = playerNameField.text {
+                newPlayerToJoin = name
+            }
+        }
+        else {
+        print("Please enter a player name" )
+        }
     }
     
     
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       
+       // Placed playerNameField.endEditing here again
         playerNameField.endEditing(true)
-        numberRoomField.endEditing(true)
+
         
         if let roomNumber = numberRoomField.text {
-        print("Rom NUmber: \(roomNumber)")
+            numberRoomField.endEditing(true)
+            print("Room NUmber: \(roomNumber)")
+            
+            if roomNumber != "" {
+            roomToJoin = Int(roomNumber)!
+            } else {
+                print("Please enter a valid Room number")
+            }
         }
-        print(textField.text ?? "Printing any defaul text")
     
         return true
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.text = ""
+        
         return true
     }
 
