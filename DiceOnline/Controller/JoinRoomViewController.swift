@@ -9,8 +9,10 @@
 import UIKit
 import Firebase
 
-var roomToJoin : Int = 1234
-var newPlayerToJoin : String = "newPlayer"
+ var roomNumber : Int = 1234
+ 
+
+// var newPlayerToJoin : String = "newPlayer"
 
 class JoinRoomViewController: UIViewController, UITextFieldDelegate {
     
@@ -31,15 +33,17 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func joinButtonPressed(_ sender: UIButton) {
         
-        if playerNameField.text != "" {
-            print("Join Button Pressed by player \(String(describing: playerNameField.text))")
+        if let newPlayerToJoin = playerNameField.text {
+            print("Join Button Pressed by player \(newPlayerToJoin) to join Room: \(roomNumber)")
+   // Check if that number exists in DB:
+
             
-            if let name = playerNameField.text {
-                newPlayerToJoin = name
+            
             }
-        }
+        
         else {
-        print("Please enter a player name" )
+            
+            print("Please enter a player name" )
         }
     }
     
@@ -48,18 +52,24 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
        
        // Placed playerNameField.endEditing here again
         playerNameField.endEditing(true)
-
+        numberRoomField.endEditing(true)
         
-        if let roomNumber = numberRoomField.text {
-            numberRoomField.endEditing(true)
-            print("Room NUmber: \(roomNumber)")
+        if let roomToJoin = Int(numberRoomField.text ?? "1234") {
+ //           numberRoomField.endEditing(true)
+            print("Room NUmber to Join: \(roomToJoin)")
+            roomNumber = roomToJoin
             
-            if roomNumber != "" {
-            roomToJoin = Int(roomNumber)!
+       // Check in dbFF if room exists
+            if getRoom(room: roomNumber) {
+                print("I am lost")
+            }
+                
+            
+
+            
             } else {
                 print("Please enter a valid Room number")
-            }
-        }
+                }
     
         return true
     }
@@ -68,6 +78,29 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
         textField.text = ""
         
         return true
+    }
+    
+    func getRoom(room : Int) -> Bool {
+        
+        var numberOfPlayersAtRoom = 0
+    
+        print("Database id: \(dbFF)")
+        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: room).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                print("Number of players in room = \(querySnapshot!.count)")
+                numberOfPlayersAtRoom = querySnapshot!.count
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    }
+              }
+        }
+        if numberOfPlayersAtRoom == 0 {
+            return false
+        } else {
+            return true
+        }
     }
 
     /*

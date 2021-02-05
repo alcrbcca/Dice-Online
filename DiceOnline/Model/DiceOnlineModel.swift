@@ -9,7 +9,7 @@
 import Foundation
 
 struct Room {
-    let roomName: String
+    let roomNumber: Int
     let numberOfPlayers: Int
 
 }
