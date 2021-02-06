@@ -9,9 +9,10 @@
 import UIKit
 import Firebase
 
- var roomNumber = 1234
+var roomNumber = 1234
 var numberOfPlayers : Int = 0
- var roomCapacity = 0
+var playersInRoom = 0
+var myPlayerName = "Me"
  
 
 // var newPlayerToJoin : String = "newPlayer"
@@ -36,10 +37,9 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
     @IBAction func joinButtonPressed(_ sender: UIButton) {
         
         if let newPlayerToJoin = playerNameField.text {
-            print("Join Button Pressed by player \(newPlayerToJoin) to join Room: \(roomNumber) which has \(numberOfPlayers) in, out of \(roomCapacity)  capacity")
-   // Check if that number exists in DB:
+            print("Join Button Pressed by player \(newPlayerToJoin) to join Room: \(roomNumber) which has \(playersInRoom) in, out of \(numberOfPlayers)  capacity")
+            myPlayerName = newPlayerToJoin
 
-            
             
             }
         
@@ -89,20 +89,20 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
             } else {
                 print("Number of players in room = \(querySnapshot!.count)")
 
-                let numPlayersOfOneEntry = querySnapshot!.documents[0].data()["NumPlayers",  default: Int()]
+                let numPlayersOfOneEntry : Int = querySnapshot!.documents[0].data()["NumPlayers",  default: Int()] as! Int
   //              let keyOfOneEntry = oneEntry.keys
   //              print("Keys of One Entry \(keyOfOneEntry)")
-                print("Num of Players of one entry in the list \(numPlayersOfOneEntry)")
-                if let confirmedNumberOfPlayers = numPlayersOfOneEntry as? Int , (error != nil) {
+                    print("Num of Players of one entry in the list \(numPlayersOfOneEntry)")
+                    let confirmedNumberOfPlayers = numPlayersOfOneEntry
                     print("Confirmed Int of Players = \(confirmedNumberOfPlayers)")
                     numberOfPlayers = confirmedNumberOfPlayers
-                }
+               
                 
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     }
                 
-                roomCapacity = querySnapshot!.count
+                playersInRoom = querySnapshot!.count
                 
               }
         }

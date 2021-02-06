@@ -46,9 +46,8 @@ class NewRoomViewController: UIViewController, UITextFieldDelegate {
     //    let dbFF = Firestore.firestore()
         print("this is my FF DB \(dbFF)")
         
-      //  dbFF.collection(K.gameInteraction).addDocument(data: ["RoomNumber" : roomNumber, "PlayerName" : playerName, "Dice1" : 1, "Dice2" : 2, "Date" : Date().timeIntervalSince1970]) {(error) in
         
-        dbFF.collection(K.gameRoomFF).addDocument(data: ["RoomNumber" : roomNumber, "NumPlayers" : numberOfPlayers, "PlayerName" : playerName]) {(error) in
+        dbFF.collection(K.gameRoomFF).addDocument(data: ["RoomNumber" : roomNumber, "NumPlayers" : numberOfPlayers, "PlayerName" : playerName, "date" : Date().timeIntervalSince1970]) {(error) in
             if let e = error {
                 print("There was an error savind room data in DB \(e)")
             } else {
