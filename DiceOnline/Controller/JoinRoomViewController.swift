@@ -9,7 +9,9 @@
 import UIKit
 import Firebase
 
- var roomNumber : Int = 1234
+ var roomNumber = 1234
+var numberOfPlayers : Int = 0
+ var roomCapacity = 0
  
 
 // var newPlayerToJoin : String = "newPlayer"
@@ -34,7 +36,7 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
     @IBAction func joinButtonPressed(_ sender: UIButton) {
         
         if let newPlayerToJoin = playerNameField.text {
-            print("Join Button Pressed by player \(newPlayerToJoin) to join Room: \(roomNumber)")
+            print("Join Button Pressed by player \(newPlayerToJoin) to join Room: \(roomNumber) which has \(numberOfPlayers) in, out of \(roomCapacity)  capacity")
    // Check if that number exists in DB:
 
             
@@ -60,9 +62,7 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
             roomNumber = roomToJoin
             
        // Check in dbFF if room exists
-            if getRoom(room: roomNumber) {
-                print("I am lost")
-            }
+             confirmRoom(room: roomNumber)
                 
             
 
@@ -80,27 +80,33 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func getRoom(room : Int) -> Bool {
+    func confirmRoom(room : Int) {
         
-        var numberOfPlayersAtRoom = 0
-    
-        print("Database id: \(dbFF)")
-        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: room).getDocuments() { (querySnapshot, err) in
-            if let err = err {
+//        print("Database id: \(dbFF)")
+        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: room).getDocuments() { (querySnapshot, error) in
+            if let err = error {
                 print("Error getting documents: \(err)")
             } else {
                 print("Number of players in room = \(querySnapshot!.count)")
-                numberOfPlayersAtRoom = querySnapshot!.count
+
+                let numPlayersOfOneEntry = querySnapshot!.documents[0].data()["NumPlayers",  default: Int()]
+  //              let keyOfOneEntry = oneEntry.keys
+  //              print("Keys of One Entry \(keyOfOneEntry)")
+                print("Num of Players of one entry in the list \(numPlayersOfOneEntry)")
+                if let confirmedNumberOfPlayers = numPlayersOfOneEntry as? Int , (error != nil) {
+                    print("Confirmed Int of Players = \(confirmedNumberOfPlayers)")
+                    numberOfPlayers = confirmedNumberOfPlayers
+                }
+                
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     }
+                
+                roomCapacity = querySnapshot!.count
+                
               }
         }
-        if numberOfPlayersAtRoom == 0 {
-            return false
-        } else {
-            return true
-        }
+       
     }
 
     /*
