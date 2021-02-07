@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-var roomNumber = 1234
+var roomNumber = 1
 var numberOfPlayers : Int = 0
 var playersInRoom = 0
 var myPlayerName = "Me"
@@ -29,6 +29,8 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
         
         playerNameField.delegate = self
         numberRoomField.delegate = self
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -36,9 +38,23 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func joinButtonPressed(_ sender: UIButton) {
         
+    
         if let newPlayerToJoin = playerNameField.text {
             print("Join Button Pressed by player \(newPlayerToJoin) to join Room: \(roomNumber) which has \(playersInRoom) in, out of \(numberOfPlayers)  capacity")
             myPlayerName = newPlayerToJoin
+            
+            
+            // Add new Player to DB
+            
+            dbFF.collection(K.gameRoomFF).addDocument(data: ["RoomNumber" : roomNumber, "NumPlayers" : numberOfPlayers, "PlayerName" : myPlayerName, "date" : Date().timeIntervalSince1970]) {(error) in
+                if let e = error {
+                    print("There was an error savind room data in DB \(e)")
+                } else {
+                    print("Room info data saved succesfuly")
+                }
+            }
+            
+ //           self.performSegue(withIdentifier: K.segueFromJoinToWait, sender: self)
 
             
             }
@@ -46,6 +62,7 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
         else {
             
             print("Please enter a player name" )
+            
         }
     }
     
@@ -56,12 +73,12 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
         playerNameField.endEditing(true)
         numberRoomField.endEditing(true)
         
-        if let roomToJoin = Int(numberRoomField.text ?? "1234") {
+        if let roomToJoin = Int(numberRoomField.text ?? "0") {
  //           numberRoomField.endEditing(true)
-            print("Room NUmber to Join: \(roomToJoin)")
+            print("Room Number to Join: \(roomToJoin)")
             roomNumber = roomToJoin
             
-       // Check in dbFF if room exists
+       // Check in dbFF if room exists, if not App would crash :( !
              confirmRoom(room: roomNumber)
                 
             
@@ -81,18 +98,35 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
     }
     
     func confirmRoom(room : Int) {
+    
+    /*
+        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: room).getDocuments { (querySnapshot, err) in
+            if let error = err {
+                print("Error getting documents \(error)")
+            } else {
+                if let oneDocument = (querySnapshot?.documents[0].data()) {
+                    print(oneDocument)
+                } else {
+                    print("somthing is worng")
+                }
+            }
+        }
+      */
+
         
+       
+         
+       
 //        print("Database id: \(dbFF)")
-        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: room).getDocuments() { (querySnapshot, error) in
+       dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: room).getDocuments() { (querySnapshot, error) in
             if let err = error {
                 print("Error getting documents: \(err)")
             } else {
                 print("Number of players in room = \(querySnapshot!.count)")
 
                 let numPlayersOfOneEntry : Int = querySnapshot!.documents[0].data()["NumPlayers",  default: Int()] as! Int
-  //              let keyOfOneEntry = oneEntry.keys
-  //              print("Keys of One Entry \(keyOfOneEntry)")
-                    print("Num of Players of one entry in the list \(numPlayersOfOneEntry)")
+
+                print("Num of Players of one entry in the list \(numPlayersOfOneEntry)")
                     let confirmedNumberOfPlayers = numPlayersOfOneEntry
                     print("Confirmed Int of Players = \(confirmedNumberOfPlayers)")
                     numberOfPlayers = confirmedNumberOfPlayers
@@ -106,7 +140,7 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
                 
               }
         }
-       
+    
     }
 
     /*

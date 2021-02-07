@@ -44,17 +44,21 @@ class WatingRoomViewController: UIViewController {
         } else {
             print ( "no name passed" )
         }
-            // Do any additional setup after loading the view.
+        
+        // Do any additional setup after loading the view.
+        // Check periodically if room is full
+     
+        
         
         let percentageJoined : Float = Float(playersJoined)/Float(finalNumberOfPlayers ?? 1)
         
       //  print("Number of Players for progress var: \(String(describing: finalNumberOfPlayers))")
-        updatePorgresBar(percentageJoined: percentageJoined)
+        updateProgresBar(percentageJoined: percentageJoined)
         
         
         }
     
-    func updatePorgresBar(percentageJoined: Float) {
+    func updateProgresBar(percentageJoined: Float) {
         waitingProgressBar.progress = percentageJoined
     }
    
@@ -69,11 +73,14 @@ class WatingRoomViewController: UIViewController {
       //              for doc in snapshotDocuments {
                      
                         let data = snapshotDocuments
-      //                  if let value1 = data["NumPlayers"] as? Int {
-      //                  print("Value1: \(value1)")
+    
                         print("Has joined: \(data.count)")
-                        
-      //                  }
+    //                    self.playersJoined = data.count
+                    
+                    DispatchQueue.main.async {
+                        self.playersJoined = data.count
+                    }
+    
                     }
                 }
             }
