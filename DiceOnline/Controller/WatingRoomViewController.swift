@@ -79,6 +79,7 @@ class WatingRoomViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         self.playersJoined = data.count
+                        print("Checking if more players join")
                     }
     
                     }

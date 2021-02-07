@@ -138,11 +138,10 @@
                                         <rect key="frame" x="0.0" y="421.5" width="414" height="210"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" placeholder="Nick name" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="xrQ-jP-Kun" userLabel="joinPlayerName">
-                                                <rect key="frame" x="142" y="-19.5" width="130" height="39.5"/>
+                                                <rect key="frame" x="136" y="-19.5" width="142" height="39.5"/>
                                                 <color key="tintColor" red="0.60594880579999999" green="0.11350636930000001" blue="0.1245979592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="7Id-fg-ONy"/>
-                                                    <constraint firstAttribute="width" constant="130" id="QRK-Mg-vJx"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
@@ -329,17 +328,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GreenBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bOy-9v-exX">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GreenBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bOy-9v-exX">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xOi-Zv-IK7">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="551"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="xOi-Zv-IK7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ujx-dH-Uou" userLabel="LogoView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="143"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DiceeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="RvO-xH-8ff">
-                                                <rect key="frame" x="151" y="24" width="112" height="86"/>
+                                                <rect key="frame" x="151" y="28.5" width="112" height="86"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="112" id="45e-z7-eI7"/>
                                                     <constraint firstAttribute="height" constant="86" id="sYq-aK-hcp"/>
@@ -347,48 +347,66 @@
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="RvO-xH-8ff" firstAttribute="centerX" secondItem="Ujx-dH-Uou" secondAttribute="centerX" id="L3f-Sc-kNr"/>
-                                            <constraint firstItem="RvO-xH-8ff" firstAttribute="centerY" secondItem="Ujx-dH-Uou" secondAttribute="centerY" id="pNd-L8-hu5"/>
-                                            <constraint firstItem="RvO-xH-8ff" firstAttribute="top" secondItem="Ujx-dH-Uou" secondAttribute="top" constant="24" id="uUj-Up-Aqk"/>
+                                            <constraint firstItem="RvO-xH-8ff" firstAttribute="centerX" secondItem="Ujx-dH-Uou" secondAttribute="centerX" id="L0g-GA-hEx"/>
+                                            <constraint firstItem="RvO-xH-8ff" firstAttribute="centerY" secondItem="Ujx-dH-Uou" secondAttribute="centerY" id="Zpm-Ne-kOt"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qa4-qy-6qS" userLabel="JoiningRommView">
-                                        <rect key="frame" x="0.0" y="142" width="414" height="409"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spy-6o-ADX" userLabel="RoomLabelView">
+                                        <rect key="frame" x="0.0" y="175" width="414" height="142.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BCX-9o-P2w">
-                                                <rect key="frame" x="108" y="114.5" width="198.5" height="180"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96P-fq-Prf">
-                                                        <rect key="frame" x="27" y="0.0" width="144" height="29"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1111" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6W-F2-PfQ" userLabel="finalRoomNumber">
-                                                        <rect key="frame" x="63" y="49" width="72.5" height="51"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                        <color key="textColor" red="0.60594880579999999" green="0.11350636930000001" blue="0.1245979592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for Players" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iK-Id-kO6">
-                                                        <rect key="frame" x="0.0" y="120" width="198.5" height="32"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P1N-Xx-azu">
-                                                        <rect key="frame" x="24" y="172" width="150" height="8"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="8" id="8Lo-cn-vY3"/>
-                                                            <constraint firstAttribute="width" constant="150" id="NAS-yb-WZS"/>
-                                                        </constraints>
-                                                    </progressView>
-                                                </subviews>
-                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96P-fq-Prf">
+                                                <rect key="frame" x="135" y="105" width="144" height="27.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="BCX-9o-P2w" firstAttribute="centerX" secondItem="qa4-qy-6qS" secondAttribute="centerX" id="TQV-b5-acv"/>
-                                            <constraint firstItem="BCX-9o-P2w" firstAttribute="centerY" secondItem="qa4-qy-6qS" secondAttribute="centerY" id="vVc-tP-NOB"/>
+                                            <constraint firstAttribute="bottom" secondItem="96P-fq-Prf" secondAttribute="bottom" constant="10" id="JoQ-OP-AlY"/>
+                                            <constraint firstItem="96P-fq-Prf" firstAttribute="centerX" secondItem="spy-6o-ADX" secondAttribute="centerX" id="ceu-dp-4e5"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5SQ-o8-kbV" userLabel="RoomNumberView">
+                                        <rect key="frame" x="0.0" y="349.5" width="414" height="143"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1111" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6W-F2-PfQ" userLabel="finalRoomNumber">
+                                                <rect key="frame" x="171" y="10" width="72.5" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <color key="textColor" red="0.60594880579999999" green="0.11350636930000001" blue="0.1245979592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Y6W-F2-PfQ" firstAttribute="centerX" secondItem="5SQ-o8-kbV" secondAttribute="centerX" id="AER-jA-p7w"/>
+                                            <constraint firstItem="Y6W-F2-PfQ" firstAttribute="top" secondItem="5SQ-o8-kbV" secondAttribute="top" constant="10" id="qmH-tP-eac"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzk-Le-L6g" userLabel="WaitingLabelView">
+                                        <rect key="frame" x="0.0" y="524.5" width="414" height="142.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for Players" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iK-Id-kO6">
+                                                <rect key="frame" x="108" y="56.5" width="198.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="7iK-Id-kO6" firstAttribute="centerX" secondItem="uzk-Le-L6g" secondAttribute="centerX" id="XSB-hA-qaU"/>
+                                            <constraint firstItem="7iK-Id-kO6" firstAttribute="centerY" secondItem="uzk-Le-L6g" secondAttribute="centerY" id="p3e-0q-dhe"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aql-Z3-Bhu" userLabel="PorgressBarView">
+                                        <rect key="frame" x="0.0" y="699" width="414" height="143"/>
+                                        <subviews>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P1N-Xx-azu">
+                                                <rect key="frame" x="5" y="71" width="404" height="2.5"/>
+                                            </progressView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="P1N-Xx-azu" firstAttribute="centerY" secondItem="aql-Z3-Bhu" secondAttribute="centerY" id="0gb-DC-P7P"/>
+                                            <constraint firstAttribute="trailing" secondItem="P1N-Xx-azu" secondAttribute="trailing" constant="5" id="2t1-tS-OyB"/>
+                                            <constraint firstItem="P1N-Xx-azu" firstAttribute="leading" secondItem="aql-Z3-Bhu" secondAttribute="leading" constant="5" id="LgZ-91-8hV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -397,14 +415,10 @@
                         <viewLayoutGuide key="safeArea" id="t7F-UW-qsq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="bOy-9v-exX" secondAttribute="bottom" id="Haw-aD-DgX"/>
-                            <constraint firstItem="xOi-Zv-IK7" firstAttribute="top" secondItem="t7F-UW-qsq" secondAttribute="top" id="IrF-Ui-N24"/>
-                            <constraint firstItem="xOi-Zv-IK7" firstAttribute="leading" secondItem="bOy-9v-exX" secondAttribute="leading" id="KqF-xn-VBs"/>
-                            <constraint firstItem="bOy-9v-exX" firstAttribute="top" secondItem="ihB-Y6-IWm" secondAttribute="top" id="RU8-KH-q3z"/>
-                            <constraint firstItem="xOi-Zv-IK7" firstAttribute="centerX" secondItem="bOy-9v-exX" secondAttribute="centerX" id="ZV6-Wg-rhw"/>
-                            <constraint firstItem="t7F-UW-qsq" firstAttribute="bottom" secondItem="xOi-Zv-IK7" secondAttribute="bottom" constant="257" id="q0l-XJ-77E"/>
-                            <constraint firstItem="bOy-9v-exX" firstAttribute="trailing" secondItem="t7F-UW-qsq" secondAttribute="trailing" id="toG-FQ-SPg"/>
-                            <constraint firstItem="bOy-9v-exX" firstAttribute="leading" secondItem="t7F-UW-qsq" secondAttribute="leading" id="v5g-q0-YVp"/>
+                            <constraint firstAttribute="bottom" secondItem="xOi-Zv-IK7" secondAttribute="bottom" id="C8C-BH-GZD"/>
+                            <constraint firstItem="xOi-Zv-IK7" firstAttribute="top" secondItem="t7F-UW-qsq" secondAttribute="top" id="gK8-BC-FPs"/>
+                            <constraint firstAttribute="trailing" secondItem="xOi-Zv-IK7" secondAttribute="trailing" id="gsL-qJ-onF"/>
+                            <constraint firstItem="xOi-Zv-IK7" firstAttribute="leading" secondItem="t7F-UW-qsq" secondAttribute="leading" id="j7K-Dm-y6e"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IGT-V6-aWT"/>
