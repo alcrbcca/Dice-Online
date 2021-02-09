@@ -99,23 +99,6 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
     
     func confirmRoom(room : Int) {
     
-    /*
-        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: room).getDocuments { (querySnapshot, err) in
-            if let error = err {
-                print("Error getting documents \(error)")
-            } else {
-                if let oneDocument = (querySnapshot?.documents[0].data()) {
-                    print(oneDocument)
-                } else {
-                    print("somthing is worng")
-                }
-            }
-        }
-      */
-
-        
-       
-         
        
 //        print("Database id: \(dbFF)")
        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: room).getDocuments() { (querySnapshot, error) in
@@ -155,6 +138,7 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
                 destinationVC.myPlayerName = myPlayerName
                 destinationVC.finalRoomNumber = roomNumber
                 destinationVC.finalNumberOfPlayers = numberOfPlayers
+                destinationVC.playersJoined = playersInRoom + 1
         }
         
     }
