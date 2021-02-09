@@ -19,8 +19,10 @@ class WatingRoomViewController: UIViewController {
     var myPlayerName : String?
     let dbFF = Firestore.firestore()
     var playersJoined = 1
+    var timerStarted = false
     var stopTimer = false
     var percentageJoined : Float = 0.0
+    let myTimer : Timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
 
     @IBOutlet weak var roomNumberView: UILabel!
     
@@ -55,23 +57,21 @@ class WatingRoomViewController: UIViewController {
         // Check periodically if room is full
 
      
-        let myTimer : Timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+ //       myTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
-        if self.stopTimer == false {
+        if timerStarted == false {
             myTimer.fire()
-        } else {
-            myTimer.invalidate()
+            timerStarted = true
         }
-        
-        
-        
     }
+    
+
     
 @objc func updateTimer() {
      //       loadRoom(room: finalRoomNumber!)
      //       let percentageJoined : Float = Float(self.playersJoined)/Float(self.finalNumberOfPlayers ?? 1)
-            
-            percentageJoined = Float(playersJoined)/Float(10.0)
+    
+    percentageJoined = Float(playersJoined)/Float(10.0)
             
     print("Number of Players for progress var: \(String(describing: self.finalNumberOfPlayers))")
        //         self.updateProgresBar(percentageJoined: percentageJoined)
@@ -79,15 +79,24 @@ class WatingRoomViewController: UIViewController {
             print("% joined: \(percentageJoined)")
             
             if percentageJoined == 1.0 {
-                print("all joined")
+                print("all joined and stoping the timer")
                 stopTimer = true
+                stopMyTimer()
+                myTimer.invalidate()
                 
-        
             }
             
             self.playersJoined += 1
-        }
         
+
+        }
+    
+    func stopMyTimer() {
+        print("Stoping the timer from the stopMyTimer function")
+        stopTimer = true
+        
+        
+    }
 
 
     func updateProgresBar(percentageJoined: Float) {
