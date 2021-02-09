@@ -9,9 +9,6 @@
 import UIKit
 import Firebase
 
-
-
-
 class WatingRoomViewController: UIViewController {
     
     var finalRoomNumber : Int?
@@ -22,13 +19,19 @@ class WatingRoomViewController: UIViewController {
     var timerStarted = false
     var stopTimer = false
     var percentageJoined : Float = 0.0
-    let myTimer : Timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-
+    
+    var myTimer : Timer? = nil {
+        willSet {
+            myTimer?.invalidate()
+        }
+    }
+    
+//    let myTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    
+    
     @IBOutlet weak var roomNumberView: UILabel!
     
     @IBOutlet weak var waitingProgressBar: UIProgressView!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,29 +55,44 @@ class WatingRoomViewController: UIViewController {
             print ( "no name passed" )
         }
         
-        
         // Do any additional setup after loading the view.
         // Check periodically if room is full
-
      
- //       myTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+ //      let myTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
-        if timerStarted == false {
-            myTimer.fire()
+  //      if timerStarted {
+            startTimer()
             timerStarted = true
-        }
+    //     }
+        
     }
     
-
+    func startTimer() {
+        stopMyTimer()
+        guard self.myTimer == nil else { return }
+        myTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    
+    func stopMyTimer()  {
+        print("Stoping the timer from the stopMyTimer function")
+        myTimer?.invalidate()
+        myTimer = nil
+    }
+    
+    func updateProgresBar(perctJoined: Float) {
+        waitingProgressBar.progress = perctJoined
+    }
     
 @objc func updateTimer() {
      //       loadRoom(room: finalRoomNumber!)
-     //       let percentageJoined : Float = Float(self.playersJoined)/Float(self.finalNumberOfPlayers ?? 1)
+    let percentageJoined = Float(self.playersJoined)/Float(self.finalNumberOfPlayers ?? Int(Float(1.0)))
     
-    percentageJoined = Float(playersJoined)/Float(10.0)
+    // percentageJoined = Float(playersJoined)/Float(10.0)
             
-    print("Number of Players for progress var: \(String(describing: self.finalNumberOfPlayers))")
-       //         self.updateProgresBar(percentageJoined: percentageJoined)
+    // print("Number of Players for progress var: \(String(describing: self.finalNumberOfPlayers))")
+            
+    updateProgresBar(perctJoined: percentageJoined)
             
             print("% joined: \(percentageJoined)")
             
@@ -82,26 +100,14 @@ class WatingRoomViewController: UIViewController {
                 print("all joined and stoping the timer")
                 stopTimer = true
                 stopMyTimer()
-                myTimer.invalidate()
                 
-            }
-            
-            self.playersJoined += 1
-        
-
+//            } else {
+//            self.playersJoined += 1
+//            }
         }
-    
-    func stopMyTimer() {
-        print("Stoping the timer from the stopMyTimer function")
-        stopTimer = true
-        
-        
     }
 
 
-    func updateProgresBar(percentageJoined: Float) {
-        waitingProgressBar.progress = percentageJoined
-    }
    
     func loadRoom(room : Int) {
     //   var roomOccupation = 0
@@ -111,7 +117,6 @@ class WatingRoomViewController: UIViewController {
                 print ("Erro retriving data from db at waiting room \(e)")
             } else {
                 if let snapshotDocuments = querySnapshot?.documents {
-      //              for doc in snapshotDocuments {
                      
                         let data = snapshotDocuments
     
