@@ -16,7 +16,6 @@ class WatingRoomViewController: UIViewController {
     var myPlayerName : String?
     let dbFF = Firestore.firestore()
     var playersJoined = 1
-    var timerStarted = false
     var stopTimer = false
     var percentageJoined : Float = 0.0
     
@@ -25,8 +24,6 @@ class WatingRoomViewController: UIViewController {
             myTimer?.invalidate()
         }
     }
-    
-//    let myTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     
     
     @IBOutlet weak var roomNumberView: UILabel!
@@ -44,6 +41,7 @@ class WatingRoomViewController: UIViewController {
             roomNumberView.text = String(number)
             
             loadRoom(room: Int(number))
+            startTimer()
             
         } else {
             print ("No room number passed")
@@ -57,13 +55,8 @@ class WatingRoomViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         // Check periodically if room is full
-     
- //      let myTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        
-  //      if timerStarted {
-            startTimer()
-            timerStarted = true
-    //     }
+
+ //       startTimer()
         
     }
     
@@ -85,7 +78,9 @@ class WatingRoomViewController: UIViewController {
     }
     
 @objc func updateTimer() {
-     //       loadRoom(room: finalRoomNumber!)
+        loadRoom(room: finalRoomNumber!)
+    print("update Timer Called")
+    
     let percentageJoined = Float(self.playersJoined)/Float(self.finalNumberOfPlayers ?? Int(Float(1.0)))
     
     // percentageJoined = Float(playersJoined)/Float(10.0)
@@ -101,9 +96,6 @@ class WatingRoomViewController: UIViewController {
                 stopTimer = true
                 stopMyTimer()
                 
-//            } else {
-//            self.playersJoined += 1
-//            }
         }
     }
 
