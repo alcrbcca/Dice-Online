@@ -16,7 +16,6 @@ class WatingRoomViewController: UIViewController {
     var myPlayerName : String?
     let dbFF = Firestore.firestore()
     var playersJoined = 1
-    var stopTimer = false
     var percentageJoined : Float = 0.0
     
     var myTimer : Timer? = nil {
@@ -93,14 +92,13 @@ class WatingRoomViewController: UIViewController {
             
             if percentageJoined == 1.0 {
                 print("all joined and stoping the timer")
-                stopTimer = true
                 stopMyTimer()
+                
+          // Here can initiate Segue to GameVC
                 
         }
     }
 
-
-   
     func loadRoom(room : Int) {
     //   var roomOccupation = 0
         dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: room).getDocuments(){
@@ -109,16 +107,9 @@ class WatingRoomViewController: UIViewController {
                 print ("Erro retriving data from db at waiting room \(e)")
             } else {
                 if let snapshotDocuments = querySnapshot?.documents {
-                     
                         let data = snapshotDocuments
-    
                         print("Has joined: \(data.count)")
-    //                    self.playersJoined = data.count
-                    
                         self.playersJoined = data.count
-                        print("Data load was succesful")
-                    
-    
                     }
                 }
             }

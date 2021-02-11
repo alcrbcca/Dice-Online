@@ -9,6 +9,9 @@
 import UIKit
 import Firebase
 
+var MyPlayerName = "Nick Name"
+var RoomNumber = 1
+
 class GameViewController: UIViewController {
     
     @IBOutlet weak var diceImageView1: UIImageView!
