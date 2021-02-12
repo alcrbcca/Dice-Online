@@ -11,7 +11,7 @@ import Firebase
 
 class NewRoomViewController: UIViewController, UITextFieldDelegate {
     
-    var roomNumber = 1
+    var roomNumber = 2
     var numberOfPlayers = 1
     var playerName = "Host"
     let dbFF = Firestore.firestore()
@@ -44,7 +44,7 @@ class NewRoomViewController: UIViewController, UITextFieldDelegate {
         
         
     //    let dbFF = Firestore.firestore()
-        print("this is my FF DB \(dbFF)")
+    //    print("this is my FF DB \(dbFF)")
         
         
         dbFF.collection(K.gameRoomFF).addDocument(data: ["RoomNumber" : roomNumber, "NumPlayers" : numberOfPlayers, "PlayerName" : playerName, "date" : Date().timeIntervalSince1970]) {(error) in
@@ -54,6 +54,16 @@ class NewRoomViewController: UIViewController, UITextFieldDelegate {
                 print("Room info data saved succesfuly")
             }
         }
+        
+    // create firt player turn
+        dbFF.collection(K.nextPlayerNameFF).addDocument(data: ["RoomNumber" : roomNumber, "PlayerName" : playerName, "date" : Date().timeIntervalSince1970]) {(error) in
+            if let e = error {
+                print("There was an error savind room data in DB \(e)")
+            } else {
+                print("Next Player turn info data saved succesfuly")
+            }
+        }
+        
         
         self.performSegue(withIdentifier: K.segueFromCreateToWait, sender: self)
         
