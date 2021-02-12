@@ -45,7 +45,7 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
             
             
             // Add new Player to DB
-            
+ 
             dbFF.collection(K.gameRoomFF).addDocument(data: ["RoomNumber" : roomNumber, "NumPlayers" : numberOfPlayers, "PlayerName" : myPlayerName, "date" : Date().timeIntervalSince1970]) {(error) in
                 if let e = error {
                     print("There was an error savind room data in DB \(e)")
@@ -53,14 +53,10 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
                     print("Room info data saved succesfuly")
                 }
             }
-            
+ 
             self.performSegue(withIdentifier: K.segueFromJoinToWait, sender: self)
-
-            
-            }
-        
-        else {
-            
+    
+            } else {
             print("Please enter a player name" )
             
         }
@@ -98,9 +94,6 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
     }
     
     func confirmRoom(room : Int) {
-    
-       
-//        print("Database id: \(dbFF)")
        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: room).getDocuments() { (querySnapshot, error) in
             if let err = error {
                 print("Error getting documents: \(err)")

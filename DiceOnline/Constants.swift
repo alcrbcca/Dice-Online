@@ -1,7 +1,9 @@
 
 struct K {
     static let gameRoomFF = "GameRoomFF"
-    static let gameInteraction = "GameInteraction"
+    static let playersOrderFF = "PlayersOrder"
+    static let gameInteractionFF = "GameInteraction"
     static let segueFromCreateToWait = "CreateToWait"
     static let segueFromJoinToWait = "JoinToWait"
+    static let segueFromWaitToGame = "WaitToGame"
 }

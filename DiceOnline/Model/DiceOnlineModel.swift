@@ -14,7 +14,8 @@ struct Room {
 
 }
 
-struct Player {
+struct GameInteraction {
+    var RoomNumber: Int
     var playerName: String
     var dice1: Int
     var dice2: Int

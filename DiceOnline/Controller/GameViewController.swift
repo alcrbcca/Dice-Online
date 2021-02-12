@@ -9,13 +9,20 @@
 import UIKit
 import Firebase
 
-var MyPlayerName = "Nick Name"
-var RoomNumber = 1
+
 
 class GameViewController: UIViewController {
     
+    var MyPlayerName = "Nick Name"
+    var RoomNumber = 1
+    var PlayersOrdered : [String]?
+    
+    let dbFF = Firestore.firestore()
+    
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
+    
+    @IBOutlet weak var playerNameLabel: UILabel!
     
     @IBAction func rollButtonPressed(_ sender: UIButton) {
         
@@ -24,6 +31,10 @@ class GameViewController: UIViewController {
         diceImageView1.image = allDice[Int.random(in: 0...5)]
         diceImageView2.image = allDice[Int.random(in: 0...5)]
         
+    }
+    
+    
+    @IBAction func nextButtonPresed(_ sender: UIButton) {
     }
     
 }

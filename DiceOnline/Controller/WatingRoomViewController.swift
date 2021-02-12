@@ -17,6 +17,7 @@ class WatingRoomViewController: UIViewController {
     let dbFF = Firestore.firestore()
     var playersJoined = 1
     var percentageJoined : Float = 0.0
+    var playersOrdered = ["Name"]
     
     var myTimer : Timer? = nil {
         willSet {
@@ -54,8 +55,6 @@ class WatingRoomViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         // Check periodically if room is full
-
- //       startTimer()
         
     }
     
@@ -76,26 +75,52 @@ class WatingRoomViewController: UIViewController {
         waitingProgressBar.progress = perctJoined
     }
     
+    func prepPlayersOrder () {
+        playersOrdered = []
+        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: finalRoomNumber ?? 1234).getDocuments() {
+            (queryS, error) in
+            if let e = error {
+                print("Error retreiving data \(e)")
+            } else {
+                if let list = queryS?.documents {
+   //                 print("Retreived docs : \(list.count)")
+                    for item in list {
+                        let data = item.data()
+   //                     print("Data ' \(data)")
+                        if let name = data["PlayerName"] as? String {
+                            self.playersOrdered.append(name)
+                        }
+                    }
+     //               print("Ordered List \(self.playersOrdered)")
+                    print("PlayersOrdered: \(self.playersOrdered.count)")
+                    for i in 0...self.playersOrdered.count-1  {
+                        print("playersOrdered Item: \(i) Name: \(self.playersOrdered[i])")
+                    }
+     // Init Segue to GameVC
+                    self.performSegue(withIdentifier: K.segueFromWaitToGame, sender: self)
+                    
+                } else {
+                    print("No Data retreived")
+                }
+            }
+        }
+      
+    }
+    
 @objc func updateTimer() {
-        loadRoom(room: finalRoomNumber!)
+    loadRoom(room: finalRoomNumber!)
     print("update Timer Called")
     
     let percentageJoined = Float(self.playersJoined)/Float(self.finalNumberOfPlayers ?? Int(Float(1.0)))
     
-    // percentageJoined = Float(playersJoined)/Float(10.0)
-            
-    // print("Number of Players for progress var: \(String(describing: self.finalNumberOfPlayers))")
-            
     updateProgresBar(perctJoined: percentageJoined)
             
             print("% joined: \(percentageJoined)")
             
             if percentageJoined == 1.0 {
-                print("all joined and stoping the timer")
+//                print("all joined and stoping the timer")
                 stopMyTimer()
-                
-          // Here can initiate Segue to GameVC
-                
+                prepPlayersOrder()
         }
     }
 
@@ -114,6 +139,16 @@ class WatingRoomViewController: UIViewController {
                 }
             }
         }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.segueFromWaitToGame {
+            let destinationVC = segue.destination as! GameViewController
+            destinationVC.MyPlayerName = myPlayerName!
+            destinationVC.RoomNumber = finalRoomNumber ?? 1
+            destinationVC.PlayersOrdered = playersOrdered
+            
+        }
+    }
 }
     
     
