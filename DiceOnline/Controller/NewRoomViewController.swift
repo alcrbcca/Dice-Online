@@ -11,7 +11,7 @@ import Firebase
 
 class NewRoomViewController: UIViewController, UITextFieldDelegate {
     
-    var roomNumber = 2
+    var roomNumber = 3
     var numberOfPlayers = 1
     var playerName = "Host"
     let dbFF = Firestore.firestore()

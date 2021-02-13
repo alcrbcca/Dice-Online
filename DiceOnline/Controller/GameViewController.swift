@@ -35,14 +35,26 @@ class GameViewController: UIViewController {
     
     @IBAction func rollButtonPressed(_ sender: UIButton) {
     
+    print("My Player  Name is \(MyPlayerName)")
     
         
         let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
+        let die1 = Int.random(in: 0...5)
+        let die2 = Int.random(in: 0...5)
         
+        dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "date" : Date().addingTimeInterval(NSTimeIntervalSince1970) ]) { (error) in
+            
+            if let e = error {
+                print("Error writing to Game Interaction in FF \(e)")
+            } else {
+                print("Successfully saved Game Interactio into FF")
+            }
         
+            
+        }
         
-        diceImageView1.image = allDice[Int.random(in: 0...5)]
-        diceImageView2.image = allDice[Int.random(in: 0...5)]
+        diceImageView1.image = allDice[die1]
+        diceImageView2.image = allDice[die2]
         
     }
     
@@ -53,7 +65,7 @@ class GameViewController: UIViewController {
     
     func updatePlayerLabel() {
         
-        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: RoomNumber ).limit(to: 1).getDocuments() {
+        dbFF.collection(K.nextPlayerNameFF).whereField("RoomNumber", isEqualTo: RoomNumber ).limit(to: 1).getDocuments() {
             (query, error) in
             if let e = error {
                 print("Error retreiving data for next player anme \(e)")
