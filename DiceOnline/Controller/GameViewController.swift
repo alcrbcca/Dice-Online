@@ -49,12 +49,35 @@ class GameViewController: UIViewController {
             } else {
                 print("Successfully saved Game Interactio into FF")
             }
-        
-            
+
         }
         
-        diceImageView1.image = allDice[die1]
-        diceImageView2.image = allDice[die2]
+        dbFF.collection(K.gameInteractionFF).whereField("RoomNumber", isEqualTo: RoomNumber).order(by: "date", descending: true).limit(to: 1).addSnapshotListener {
+            (queryInteraction, error) in
+            if let e = error {
+                print("Error retreiving data for next dice roll \(e)")
+            } else {
+                if let listInteraction = queryInteraction?.documents {
+   //                 print("Retreived docs : \(list.count)")
+                    for item in listInteraction {
+                        let data = item.data()
+                        print("Game Interaction Data \(data)")
+    //          Update dice Images:
+                        
+                        if let die1FF = data["die1"] as? Int , let die2FF = data["die2"] as? Int {
+                            self.diceImageView1.image = allDice[die1FF]
+                            self.diceImageView2.image = allDice[die2FF]
+                        }
+                    }
+                
+                } else {
+                    print("No Next Player Data retreived")
+                }
+            }
+        }
+        
+        
+
         
     }
     
