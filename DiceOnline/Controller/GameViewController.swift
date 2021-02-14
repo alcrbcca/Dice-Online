@@ -60,7 +60,19 @@ class GameViewController: UIViewController {
     
     
     @IBAction func nextButtonPresed(_ sender: UIButton) {
-    
+        var NextPlayerIndex = 0
+        print("Players Orderes as : \(PlayersOrdered as Any)")
+        
+        for i in 0...PlayersOrdered!.count-1 {
+            if PlayersOrdered![i] == MyPlayerName {
+              NextPlayerIndex = i
+            }
+        }
+        
+        if NextPlayerIndex == PlayersOrdered!.count - 1 {
+           NextPlayerIndex = 0
+        }
+        print("Next Player Name : \(PlayersOrdered![NextPlayerIndex])")
     }
     
     func updatePlayerLabel() {
