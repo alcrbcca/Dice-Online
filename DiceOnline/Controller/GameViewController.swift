@@ -64,20 +64,23 @@ class GameViewController: UIViewController {
         print("Players Orderes as : \(PlayersOrdered as Any)")
         
         for i in 0...PlayersOrdered!.count-1 {
+//            if PlayersOrdered![i] == "Larry" {
             if PlayersOrdered![i] == MyPlayerName {
-              NextPlayerIndex = i
+              NextPlayerIndex = i + 1
             }
         }
         
-        if NextPlayerIndex == PlayersOrdered!.count - 1 {
+        if NextPlayerIndex == PlayersOrdered!.count {
            NextPlayerIndex = 0
         }
         print("Next Player Name : \(PlayersOrdered![NextPlayerIndex])")
+        dbFF.collection(K.nextPlayerNameFF).addDocument(data: ["RoomNumber" : RoomNumber, "PlayerName" : self.PlayersOrdered![NextPlayerIndex], "date" : Date().timeIntervalSince1970])
+        updatePlayerLabel()
     }
     
     func updatePlayerLabel() {
         
-        dbFF.collection(K.nextPlayerNameFF).whereField("RoomNumber", isEqualTo: RoomNumber ).limit(to: 1).getDocuments() {
+        dbFF.collection(K.nextPlayerNameFF).whereField("RoomNumber", isEqualTo: RoomNumber).order(by: "date", descending: true).limit(to: 1).getDocuments() {
             (query, error) in
             if let e = error {
                 print("Error retreiving data for next player anme \(e)")
