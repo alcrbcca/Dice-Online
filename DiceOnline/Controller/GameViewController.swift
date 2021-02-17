@@ -41,19 +41,19 @@ class GameViewController: UIViewController {
         
     let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
         
-    if MyPlayerName == currentPlayer {
+    if MyPlayerName == currentPlayer || MyPlayerName == "Tester" {
         let die1 = Int.random(in: 0...5)
         let die2 = Int.random(in: 0...5)
         
-        dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "date" : Date().addingTimeInterval(NSTimeIntervalSince1970) ]) { (error) in
+        dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "date" : Date().timeIntervalSince1970 ]) { (error) in
             
             if let e = error {
                 print("Error writing to Game Interaction in FF \(e)")
             } else {
                 print("Successfully saved Game Interactio into FF")
             }
+        }
 
-            }
     } else {
         playerNameLabel.text = "Not your turn"
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false) {
@@ -75,8 +75,21 @@ class GameViewController: UIViewController {
     //          Update dice Images:
                         
                         if let die1FF = data["die1"] as? Int , let die2FF = data["die2"] as? Int {
+                            // present random numbers for 1 sec
+                       
+                              for i in 0...4 {
+                                  Timer.scheduledTimer(withTimeInterval: Double(i) * 0.25, repeats: false) {
+                                      (nil) in
+                                      self.diceImageView1.image = allDice[Int.random(in: 0...5)]
+                                      self.diceImageView2.image = allDice[Int.random(in: 0...5)]
+                                  }
+                              }
+                         
+                            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) {
+                                (nil) in
                             self.diceImageView1.image = allDice[die1FF]
                             self.diceImageView2.image = allDice[die2FF]
+                            }
                         }
                     }
                 

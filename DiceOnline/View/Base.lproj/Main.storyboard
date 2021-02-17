@@ -533,30 +533,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8G-ZJ-AXO" userLabel="RollView">
                                         <rect key="frame" x="0.0" y="506" width="414" height="167.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="redraw" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="vxF-Nc-wzy" userLabel="Roll">
-                                                <rect key="frame" x="150" y="58" width="114" height="48"/>
+                                            <button opaque="NO" contentMode="redraw" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vxF-Nc-wzy" userLabel="Roll">
+                                                <rect key="frame" x="156" y="68" width="102" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="Roll">
-                                                            <attributes>
-                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" metaFont="system" size="30"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <state key="normal" title="Roll">
+                                                    <color key="titleColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="rollButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8QA-QE-jgG"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="vxF-Nc-wzy" firstAttribute="centerX" secondItem="X8G-ZJ-AXO" secondAttribute="centerX" id="ENK-eA-veJ"/>
-                                            <constraint firstItem="vxF-Nc-wzy" firstAttribute="centerY" secondItem="X8G-ZJ-AXO" secondAttribute="centerY" id="uff-Jp-O3q"/>
-                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwW-x6-1cx" userLabel="Next-ExitView">
                                         <rect key="frame" x="0.0" y="674.5" width="414" height="167.5"/>
@@ -587,9 +577,6 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNt-66-XFR" userLabel="NextButton">
                                                                 <rect key="frame" x="71" y="59.5" width="61" height="48"/>
                                                                 <color key="backgroundColor" red="0.60594880579999999" green="0.11350636930000001" blue="0.1245979592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="a7L-V2-Au9"/>
-                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                                 <size key="titleShadowOffset" width="2" height="2"/>
                                                                 <state key="normal" title="Next">
