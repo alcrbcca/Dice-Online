@@ -17,27 +17,43 @@ class GameViewController: UIViewController {
     var currentPlayer = "System"
     var RoomNumber = 1
     var PlayersOrdered : [String]?
+    var oneDie = false
     
     let dbFF = Firestore.firestore()
     
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     @IBOutlet weak var playerNameLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var rollButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updatePlayerLabel()
+        rollButton.layer.cornerRadius = rollButton.frame.size.height/4
+        
+        nextButton.layer.cornerRadius = nextButton.frame.size.height/5
+        
         
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func diceSwitchChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            oneDie = false
+            diceImageView2.isHidden.toggle()
+        } else {
+            oneDie = true
+            diceImageView2.isHidden.toggle()
+        }
+    }
     
     @IBAction func rollButtonPressed(_ sender: UIButton) {
     
     print("My Player  Name is \(MyPlayerName) and Crrent Player is \(currentPlayer)")
     
-        
+        sender.showsTouchWhenHighlighted = true
         
     let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
         
@@ -59,8 +75,8 @@ class GameViewController: UIViewController {
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false) {
             (nil) in
             self.playerNameLabel.text = self.currentPlayer
+            }
         }
-    }
         
         dbFF.collection(K.gameInteractionFF).whereField("RoomNumber", isEqualTo: RoomNumber).order(by: "date", descending: true).limit(to: 1).addSnapshotListener {
             (queryInteraction, error) in
