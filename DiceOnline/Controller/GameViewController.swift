@@ -161,9 +161,24 @@ class GameViewController: UIViewController {
                 }
             }
         }
-        
     }
     
+    @IBAction func exitButtonPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Alert", message: "Are you sure you want to leave the game room", preferredStyle: UIAlertController.Style.alert)
+ 
+        alert.addAction(UIAlertAction(title: "Cancel", style:      UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) in
+            print("Cancel Exiting")
+        } ))
+        
+        alert.addAction(UIAlertAction(title: "Yes", style:      UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) in
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        } ))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
 }
 
