@@ -65,7 +65,7 @@ class NewRoomViewController: UIViewController, UITextFieldDelegate {
     
      // create an entry in the Game interaction table so other players can fetch dice values, via a listerner to the same room, before the first play
         
-        dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.roomNumber , "PlayerName": self.playerName, "die1" : 0, "die2" : 0, "date" : Date().timeIntervalSince1970 ]) { (error) in
+        dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.roomNumber , "PlayerName": self.playerName, "die1" : 0, "die2" : 0, "oneDie" : 0, "date" : Date().timeIntervalSince1970 ]) { (error) in
             
             if let e = error {
                 print("Error writing to Game Interaction in FF \(e)")

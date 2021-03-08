@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
     var oneDie = false
     
     let dbFF = Firestore.firestore()
+    let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
     
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
@@ -37,6 +38,7 @@ class GameViewController: UIViewController {
         
         
         // Do any additional setup after loading the view.
+        updateInteraction()
     }
     
     @IBAction func diceSwitchChanged(_ sender: UISwitch) {
@@ -54,14 +56,16 @@ class GameViewController: UIViewController {
     print("My Player  Name is \(MyPlayerName) and Crrent Player is \(currentPlayer)")
     
         sender.showsTouchWhenHighlighted = true
-        
-    let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
+ 
+  // Copied to up in the class the allDice
+  //    let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
         
     if MyPlayerName == currentPlayer || MyPlayerName == "Tester" {
         let die1 = Int.random(in: 0...5)
         let die2 = Int.random(in: 0...5)
         
-        dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "date" : Date().timeIntervalSince1970 ]) { (error) in
+    
+        dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
             
             if let e = error {
                 print("Error writing to Game Interaction in FF \(e)")
@@ -78,6 +82,10 @@ class GameViewController: UIViewController {
             }
         }
         
+        updateInteraction()
+        
+        /* this section was moved to a func updateInteraction()
+         
         dbFF.collection(K.gameInteractionFF).whereField("RoomNumber", isEqualTo: RoomNumber).order(by: "date", descending: true).limit(to: 1).addSnapshotListener {
             (queryInteraction, error) in
             if let e = error {
@@ -110,7 +118,48 @@ class GameViewController: UIViewController {
                     }
                 
                 } else {
-                    print("No Next Player Data retreived")
+                    print("No dice roll data retreived")
+                }
+            }
+        }
+        */
+        
+    }
+    
+    func updateInteraction() {
+        dbFF.collection(K.gameInteractionFF).whereField("RoomNumber", isEqualTo: RoomNumber).order(by: "date", descending: true).limit(to: 1).addSnapshotListener {
+            (queryInteraction, error) in
+            if let e = error {
+                print("Error retreiving data for next dice roll \(e)")
+            } else {
+                if let listInteraction = queryInteraction?.documents {
+   //                 print("Retreived docs : \(list.count)")
+                    for item in listInteraction {
+                        let data = item.data()
+                        print("Game Interaction Data \(data)")
+    //          Update dice Images:
+                        
+                        if let die1FF = data["die1"] as? Int , let die2FF = data["die2"] as? Int {
+                            // present random numbers for 1 sec
+                       
+                              for i in 0...4 {
+                                  Timer.scheduledTimer(withTimeInterval: Double(i) * 0.25, repeats: false) {
+                                      (nil) in
+                                    self.diceImageView1.image = self.allDice[Int.random(in: 0...5)]
+                                    self.diceImageView2.image = self.allDice[Int.random(in: 0...5)]
+                                  }
+                              }
+                         
+                            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) {
+                                (nil) in
+                                self.diceImageView1.image = self.allDice[die1FF]
+                                self.diceImageView2.image = self.allDice[die2FF]
+                            }
+                        }
+                    }
+                
+                } else {
+                    print("No dice roll data retreived")
                 }
             }
         }
@@ -138,7 +187,7 @@ class GameViewController: UIViewController {
     
     func updatePlayerLabel() {
         
-        dbFF.collection(K.nextPlayerNameFF).whereField("RoomNumber", isEqualTo: RoomNumber).order(by: "date", descending: true).limit(to: 1).getDocuments() {
+        dbFF.collection(K.nextPlayerNameFF).whereField("RoomNumber", isEqualTo: RoomNumber).order(by: "date", descending: true).limit(to: 1).addSnapshotListener {
             (query, error) in
             if let e = error {
                 print("Error retreiving data for next player anme \(e)")
