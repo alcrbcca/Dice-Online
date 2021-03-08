@@ -43,8 +43,7 @@ class NewRoomViewController: UIViewController, UITextFieldDelegate {
         
         
         
-    //    let dbFF = Firestore.firestore()
-    //    print("this is my FF DB \(dbFF)")
+    //    Create entry in FF for new room Number
         
         
         dbFF.collection(K.gameRoomFF).addDocument(data: ["RoomNumber" : roomNumber, "NumPlayers" : numberOfPlayers, "PlayerName" : playerName, "date" : Date().timeIntervalSince1970]) {(error) in
@@ -63,6 +62,18 @@ class NewRoomViewController: UIViewController, UITextFieldDelegate {
                 print("Next Player turn info data saved succesfuly")
             }
         }
+    
+     // create an entry in the Game interaction table so other players can fetch dice values, via a listerner to the same room, before the first play
+        
+        dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.roomNumber , "PlayerName": self.playerName, "die1" : 0, "die2" : 0, "date" : Date().timeIntervalSince1970 ]) { (error) in
+            
+            if let e = error {
+                print("Error writing to Game Interaction in FF \(e)")
+            } else {
+                print("Successfully saved Game Interactio into FF")
+            }
+        }
+        
         
         
         self.performSegue(withIdentifier: K.segueFromCreateToWait, sender: self)
