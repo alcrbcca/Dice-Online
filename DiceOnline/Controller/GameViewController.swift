@@ -84,46 +84,6 @@ class GameViewController: UIViewController {
         
         updateInteraction()
         
-        /* this section was moved to a func updateInteraction()
-         
-        dbFF.collection(K.gameInteractionFF).whereField("RoomNumber", isEqualTo: RoomNumber).order(by: "date", descending: true).limit(to: 1).addSnapshotListener {
-            (queryInteraction, error) in
-            if let e = error {
-                print("Error retreiving data for next dice roll \(e)")
-            } else {
-                if let listInteraction = queryInteraction?.documents {
-   //                 print("Retreived docs : \(list.count)")
-                    for item in listInteraction {
-                        let data = item.data()
-                        print("Game Interaction Data \(data)")
-    //          Update dice Images:
-                        
-                        if let die1FF = data["die1"] as? Int , let die2FF = data["die2"] as? Int {
-                            // present random numbers for 1 sec
-                       
-                              for i in 0...4 {
-                                  Timer.scheduledTimer(withTimeInterval: Double(i) * 0.25, repeats: false) {
-                                      (nil) in
-                                      self.diceImageView1.image = allDice[Int.random(in: 0...5)]
-                                      self.diceImageView2.image = allDice[Int.random(in: 0...5)]
-                                  }
-                              }
-                         
-                            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) {
-                                (nil) in
-                            self.diceImageView1.image = allDice[die1FF]
-                            self.diceImageView2.image = allDice[die2FF]
-                            }
-                        }
-                    }
-                
-                } else {
-                    print("No dice roll data retreived")
-                }
-            }
-        }
-        */
-        
     }
     
     func updateInteraction() {
@@ -164,27 +124,7 @@ class GameViewController: UIViewController {
             }
         }
     }
-    
-    
-    @IBAction func nextButtonPresed(_ sender: UIButton) {
-        var NextPlayerIndex = 0
-        print("Players Orderes as : \(PlayersOrdered as Any)")
-        
-        for i in 0...PlayersOrdered!.count-1 {
-            if PlayersOrdered![i] == MyPlayerName {
-              NextPlayerIndex = i + 1
-            }
-        }
-        
-        if NextPlayerIndex == PlayersOrdered!.count {
-             NextPlayerIndex = 0
-   //        NextPlayerIndex = 1
-        }
-        print("Next Player Name : \(PlayersOrdered![NextPlayerIndex])")
-        dbFF.collection(K.nextPlayerNameFF).addDocument(data: ["RoomNumber" : RoomNumber, "PlayerName" : self.PlayersOrdered![NextPlayerIndex], "date" : Date().timeIntervalSince1970])
-        updatePlayerLabel()
-    }
-    
+
     func updatePlayerLabel() {
         
         dbFF.collection(K.nextPlayerNameFF).whereField("RoomNumber", isEqualTo: RoomNumber).order(by: "date", descending: true).limit(to: 1).addSnapshotListener {
@@ -212,6 +152,32 @@ class GameViewController: UIViewController {
         }
     }
     
+    @IBAction func nextButtonPresed(_ sender: UIButton) {
+        
+            if self.currentPlayer == self.MyPlayerName {
+                    var NextPlayerIndex = 0
+                  //  print("Players Orderes as : \(PlayersOrdered as Any)")
+                    
+                    for i in 0...PlayersOrdered!.count-1 {
+                        if PlayersOrdered![i] == MyPlayerName {
+                          NextPlayerIndex = i + 1
+                        }
+                    }
+                    
+                    if NextPlayerIndex == PlayersOrdered!.count {
+                         NextPlayerIndex = 0
+               //        NextPlayerIndex = 1
+                    }
+                    print("Next Player Name : \(PlayersOrdered![NextPlayerIndex])")
+                    dbFF.collection(K.nextPlayerNameFF).addDocument(data: ["RoomNumber" : RoomNumber, "PlayerName" : self.PlayersOrdered![NextPlayerIndex], "date" : Date().timeIntervalSince1970])
+                    updatePlayerLabel()
+                }
+         else {
+         print("No my turn to change player")
+        }
+    }
+
+    
     @IBAction func exitButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "Alert", message: "Are you sure you want to leave the game room", preferredStyle: UIAlertController.Style.alert)
  
@@ -230,4 +196,3 @@ class GameViewController: UIViewController {
     }
     
 }
-
