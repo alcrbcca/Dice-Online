@@ -2,12 +2,13 @@
 //  ViewController.swift
 //  DiceOnline
 //
-//  Adjusted by Alfredo Cruz
+//  Adjusted to be DiceOnline by Alfredo Cruz
 //
 //
 
 import UIKit
 import Firebase
+import AVFoundation
 
 
 
@@ -18,6 +19,8 @@ class GameViewController: UIViewController {
     var RoomNumber = 1
     var PlayersOrdered : [String]?
     var oneDie = false
+    
+    var player: AVAudioPlayer!
     
     let dbFF = Firestore.firestore()
     let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
@@ -39,6 +42,13 @@ class GameViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         updateInteraction()
+    }
+    
+    func playSound() {
+        print("play a sound on my turn")
+        let url = Bundle.main.url(forResource: "C", withExtension:  "wav" )
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player.play()
     }
     
     @IBAction func diceSwitchChanged(_ sender: UISwitch) {
@@ -169,6 +179,10 @@ class GameViewController: UIViewController {
      //               print("Ordered List \(self.playersOrdered)")
                     print("Current Player: \(self.currentPlayer)")
                         self.playerNameLabel.text = self.currentPlayer
+                    
+                    if self.currentPlayer == self.MyPlayerName {
+                        self.playSound()
+                    }
                 
                 } else {
                     print("No Next Player Data retreived")
