@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  AutoLayout-iOS13
+//  DiceOnline
 //
-//  Created by Angela Yu on 28/06/2019.
-//  Copyright © 2019 The App Brewery. All rights reserved.
+//  Adjusted by Alfredo Cruz
+//
 //
 
 import UIKit
@@ -44,10 +44,27 @@ class GameViewController: UIViewController {
     @IBAction func diceSwitchChanged(_ sender: UISwitch) {
         if sender.isOn {
             oneDie = false
-            diceImageView2.isHidden.toggle()
+            diceImageView2.isHidden = false
+            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : 0, "die2" : 0, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
+                
+                if let e = error {
+                    print("Error writing to Game Interaction in FF \(e)")
+                } else {
+                    print("Successfully saved Game Interactio into FF")
+                }
+            }
+            
         } else {
             oneDie = true
-            diceImageView2.isHidden.toggle()
+            diceImageView2.isHidden = true
+            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : 1, "die2" : 1, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
+                
+                if let e = error {
+                    print("Error writing to Game Interaction in FF \(e)")
+                } else {
+                    print("Successfully saved Game Interactio into FF")
+                }
+            }
         }
     }
     
@@ -99,7 +116,7 @@ class GameViewController: UIViewController {
                         print("Game Interaction Data \(data)")
     //          Update dice Images:
                         
-                        if let die1FF = data["die1"] as? Int , let die2FF = data["die2"] as? Int {
+                        if let die1FF = data["die1"] as? Int , let die2FF = data["die2"] as? Int, let oneDieTrueFF = data["oneDieTrue"] as? Bool {
                             // present random numbers for 1 sec
                        
                               for i in 0...4 {
@@ -107,6 +124,9 @@ class GameViewController: UIViewController {
                                       (nil) in
                                     self.diceImageView1.image = self.allDice[Int.random(in: 0...5)]
                                     self.diceImageView2.image = self.allDice[Int.random(in: 0...5)]
+                                    if oneDieTrueFF {
+                                        self.diceImageView2.isHidden = true
+                                    }
                                   }
                               }
                          
@@ -114,6 +134,9 @@ class GameViewController: UIViewController {
                                 (nil) in
                                 self.diceImageView1.image = self.allDice[die1FF]
                                 self.diceImageView2.image = self.allDice[die2FF]
+                                if oneDieTrueFF {
+                                    self.diceImageView2.isHidden = true
+                                }
                             }
                         }
                     }
