@@ -57,7 +57,7 @@ class GameViewController: UIViewController {
         } else {
             oneDie = true
             diceImageView2.isHidden = true
-            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : 1, "die2" : 1, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
+            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : 0, "die2" : 0, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
                 
                 if let e = error {
                     print("Error writing to Game Interaction in FF \(e)")
@@ -87,7 +87,7 @@ class GameViewController: UIViewController {
             if let e = error {
                 print("Error writing to Game Interaction in FF \(e)")
             } else {
-                print("Successfully saved Game Interactio into FF")
+              //  print("Successfully saved Game Interactio into FF")
             }
         }
 
@@ -122,7 +122,9 @@ class GameViewController: UIViewController {
                               for i in 0...4 {
                                   Timer.scheduledTimer(withTimeInterval: Double(i) * 0.25, repeats: false) {
                                       (nil) in
-                                    self.diceImageView1.image = self.allDice[Int.random(in: 0...5)]
+                                    if !oneDieTrueFF {
+                                        self.diceImageView1.image = self.allDice[Int.random(in: 0...5)]
+                                    }
                                     self.diceImageView2.image = self.allDice[Int.random(in: 0...5)]
                                     if oneDieTrueFF {
                                         self.diceImageView2.isHidden = true
