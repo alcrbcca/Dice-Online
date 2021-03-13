@@ -46,7 +46,7 @@ class GameViewController: UIViewController {
     }
     
     func playSound(sound: String) {
-        print("play a sound on my turn")
+        print("play a sound: \(sound) on my turn")
         let url = Bundle.main.url(forResource: sound, withExtension:  "wav" )
         player = try! AVAudioPlayer(contentsOf: url!)
         player.play()
@@ -88,7 +88,7 @@ class GameViewController: UIViewController {
     if MyPlayerName == currentPlayer || MyPlayerName == "Tester" {
         let die1 = Int.random(in: 0...5)
         let die2 = Int.random(in: 0...5)
-        
+        self.playSound(sound: "dice")
     
         dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
             
