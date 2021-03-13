@@ -230,8 +230,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6v-wO-VfD">
                                         <rect key="frame" x="0.0" y="201" width="375" height="200"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="center" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="QCG-aF-CvO" userLabel="NameField">
-                                                <rect key="frame" x="141.5" y="80.5" width="92" height="39.5"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="center" minimumFontSize="22" id="QCG-aF-CvO" userLabel="NameField">
+                                                <rect key="frame" x="142" y="80" width="91" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.60594880579999999" green="0.11350636930000001" blue="0.1245979592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go"/>
@@ -252,13 +253,15 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v89-dO-Rjf">
-                                                <rect key="frame" x="132" y="76" width="111" height="32"/>
+                                                <rect key="frame" x="104" y="76" width="167" height="32"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <segments>
                                                     <segment title="1"/>
                                                     <segment title="2"/>
                                                     <segment title="3"/>
                                                     <segment title="4"/>
+                                                    <segment title="5"/>
+                                                    <segment title="6"/>
                                                 </segments>
                                                 <connections>
                                                     <action selector="numberPlayersSelected:" destination="YeN-0Q-Wo7" eventType="valueChanged" id="agk-rI-o9A"/>
