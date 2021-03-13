@@ -124,21 +124,21 @@
                                         <rect key="frame" x="0.0" y="162" width="375" height="161"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Room #" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xFi-CJ-yas">
-                                                <rect key="frame" x="100.5" y="10" width="174" height="39.5"/>
+                                                <rect key="frame" x="100.5" y="61" width="174" height="39.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="xFi-CJ-yas" firstAttribute="top" secondItem="Vz6-iM-Xmt" secondAttribute="top" constant="10" id="5Ca-Dn-Pje"/>
                                             <constraint firstItem="xFi-CJ-yas" firstAttribute="centerX" secondItem="Vz6-iM-Xmt" secondAttribute="centerX" id="Ler-24-0Bj"/>
+                                            <constraint firstItem="xFi-CJ-yas" firstAttribute="centerY" secondItem="Vz6-iM-Xmt" secondAttribute="centerY" id="MLM-rW-YAm"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Apd-pu-Zjo" userLabel="NameViwe">
                                         <rect key="frame" x="0.0" y="324" width="375" height="161"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" placeholder="Nick name" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="xrQ-jP-Kun" userLabel="joinPlayerName">
-                                                <rect key="frame" x="116.5" y="-19.5" width="142" height="39.5"/>
+                                                <rect key="frame" x="116.5" y="61" width="142" height="39.5"/>
                                                 <color key="tintColor" red="0.60594880579999999" green="0.11350636930000001" blue="0.1245979592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="7Id-fg-ONy"/>
@@ -148,8 +148,8 @@
                                             </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="xrQ-jP-Kun" firstAttribute="centerX" secondItem="Apd-pu-Zjo" secondAttribute="centerX" id="4dm-bO-gQz"/>
-                                            <constraint firstItem="xrQ-jP-Kun" firstAttribute="centerY" secondItem="Apd-pu-Zjo" secondAttribute="top" id="DRJ-bY-UnH"/>
+                                            <constraint firstItem="xrQ-jP-Kun" firstAttribute="centerY" secondItem="Apd-pu-Zjo" secondAttribute="centerY" id="0Ip-a7-q64"/>
+                                            <constraint firstItem="xrQ-jP-Kun" firstAttribute="centerX" secondItem="Apd-pu-Zjo" secondAttribute="centerX" id="74L-5I-7zN"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNE-BB-prp" userLabel="JoinView">
