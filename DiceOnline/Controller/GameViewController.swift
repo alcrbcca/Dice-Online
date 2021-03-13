@@ -19,6 +19,7 @@ class GameViewController: UIViewController {
     var RoomNumber = 1
     var PlayersOrdered : [String]?
     var oneDie = false
+    var soundFile = "C"
     
     var player: AVAudioPlayer!
     
@@ -44,9 +45,9 @@ class GameViewController: UIViewController {
         updateInteraction()
     }
     
-    func playSound() {
+    func playSound(sound: String) {
         print("play a sound on my turn")
-        let url = Bundle.main.url(forResource: "C", withExtension:  "wav" )
+        let url = Bundle.main.url(forResource: sound, withExtension:  "wav" )
         player = try! AVAudioPlayer(contentsOf: url!)
         player.play()
     }
@@ -83,10 +84,7 @@ class GameViewController: UIViewController {
     print("My Player  Name is \(MyPlayerName) and Crrent Player is \(currentPlayer)")
     
         sender.showsTouchWhenHighlighted = true
- 
-  // Copied to up in the class the allDice
-  //    let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
-        
+         
     if MyPlayerName == currentPlayer || MyPlayerName == "Tester" {
         let die1 = Int.random(in: 0...5)
         let die2 = Int.random(in: 0...5)
@@ -138,6 +136,8 @@ class GameViewController: UIViewController {
                                     self.diceImageView2.image = self.allDice[Int.random(in: 0...5)]
                                     if oneDieTrueFF {
                                         self.diceImageView2.isHidden = true
+                                    } else {
+                                        self.diceImageView2.isHidden = false
                                     }
                                   }
                               }
@@ -181,7 +181,7 @@ class GameViewController: UIViewController {
                         self.playerNameLabel.text = self.currentPlayer
                     
                     if self.currentPlayer == self.MyPlayerName {
-                        self.playSound()
+                        self.playSound(sound: "C")
                     }
                 
                 } else {

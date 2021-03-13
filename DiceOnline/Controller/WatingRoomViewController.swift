@@ -109,13 +109,13 @@ class WatingRoomViewController: UIViewController {
     
 @objc func updateTimer() {
     loadRoom(room: finalRoomNumber!)
-    print("update Timer Called")
+//    print("update Timer Called")
     
     let percentageJoined = Float(self.playersJoined)/Float(self.finalNumberOfPlayers ?? Int(Float(1.0)))
     
     updateProgresBar(perctJoined: percentageJoined)
             
-            print("% joined: \(percentageJoined)")
+ //           print("% joined: \(percentageJoined)")
             
             if percentageJoined == 1.0 {
 //                print("all joined and stoping the timer")
@@ -133,7 +133,7 @@ class WatingRoomViewController: UIViewController {
             } else {
                 if let snapshotDocuments = querySnapshot?.documents {
                         let data = snapshotDocuments
-                        print("Has joined: \(data.count)")
+    //                    print("Has joined: \(data.count)")
                         self.playersJoined = data.count
                     }
                 }
