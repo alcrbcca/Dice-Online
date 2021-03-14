@@ -38,27 +38,30 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func joinButtonPressed(_ sender: UIButton) {
         
-    
-        if let newPlayerToJoin = playerNameField.text {
-            print("Join Button Pressed by player \(newPlayerToJoin) to join Room: \(roomNumber) which has \(playersInRoom) in, out of \(numberOfPlayers)  capacity")
-            myPlayerName = newPlayerToJoin
-            
-            
-            // Add new Player to DB
- 
-            dbFF.collection(K.gameRoomFF).addDocument(data: ["RoomNumber" : roomNumber, "NumPlayers" : numberOfPlayers, "PlayerName" : myPlayerName, "date" : Date().timeIntervalSince1970]) {(error) in
-                if let e = error {
-                    print("There was an error savind room data in DB \(e)")
-                } else {
-                    print("Room info data saved succesfuly")
+        if roomNumber != 1 {
+            if let newPlayerToJoin = playerNameField.text {
+                print("Join Button Pressed by player \(newPlayerToJoin) to join Room: \(roomNumber) which has \(playersInRoom) in, out of \(numberOfPlayers)  capacity")
+                myPlayerName = newPlayerToJoin
+                
+                
+                // Add new Player to DB
+     
+                dbFF.collection(K.gameRoomFF).addDocument(data: ["RoomNumber" : roomNumber, "NumPlayers" : numberOfPlayers, "PlayerName" : myPlayerName, "date" : Date().timeIntervalSince1970]) {(error) in
+                    if let e = error {
+                        print("There was an error savind room data in DB \(e)")
+                    } else {
+                        print("Room info data saved succesfuly")
+                    }
                 }
-            }
- 
-            self.performSegue(withIdentifier: K.segueFromJoinToWait, sender: self)
-    
-            } else {
-            print("Please enter a player name" )
-            
+     
+                self.performSegue(withIdentifier: K.segueFromJoinToWait, sender: self)
+        
+                } else {
+                print("Please enter a player name" )
+                    self.playerNameField.placeholder = "Enter a Name"
+                }
+        } else {
+            numberRoomField.placeholder = "Enter Valid Room Number"
         }
     }
     
@@ -75,7 +78,8 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
             roomNumber = roomToJoin
             
        // Check in dbFF if room exists, if not App would crash :( !
-             confirmRoom(room: roomNumber)
+       // Commenting the next line until check if guard present from charshing
+       //     confirmRoom(room: roomNumber)
                 
             
 
