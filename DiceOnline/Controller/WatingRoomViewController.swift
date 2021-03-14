@@ -115,10 +115,10 @@ class WatingRoomViewController: UIViewController {
     
     updateProgresBar(perctJoined: percentageJoined)
             
- //           print("% joined: \(percentageJoined)")
+            print("% joined: \(percentageJoined)")
             
             if percentageJoined == 1.0 {
-//                print("all joined and stoping the timer")
+                print("all joined and stoping the timer")
                 stopMyTimer()
                 prepPlayersOrder()
         }

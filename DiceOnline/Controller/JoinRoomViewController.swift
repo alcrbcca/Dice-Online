@@ -77,9 +77,9 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
             print("Room Number to Join: \(roomToJoin)")
             roomNumber = roomToJoin
             
-       // Check in dbFF if room exists, if not App would crash :( !
-       // Commenting the next line until check if guard present from charshing
-       //     confirmRoom(room: roomNumber)
+       // Check in dbFF if room exists, if not App would crash :( ! Also, updating number of players joining Room
+       
+            confirmRoom(room: roomNumber)
                 
             
 

@@ -20,7 +20,8 @@ class GameViewController: UIViewController {
     var PlayersOrdered : [String]?
     var oneDie = false
     var soundFile = "C"
-    
+    var die1 = 0
+    var die2 = 0
     var player: AVAudioPlayer!
     
     let dbFF = Firestore.firestore()
@@ -56,7 +57,7 @@ class GameViewController: UIViewController {
         if sender.isOn {
             oneDie = false
             diceImageView2.isHidden = false
-            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : 0, "die2" : 0, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
+            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
                 
                 if let e = error {
                     print("Error writing to Game Interaction in FF \(e)")
@@ -68,7 +69,7 @@ class GameViewController: UIViewController {
         } else {
             oneDie = true
             diceImageView2.isHidden = true
-            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : 0, "die2" : 0, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
+            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
                 
                 if let e = error {
                     print("Error writing to Game Interaction in FF \(e)")
@@ -86,8 +87,8 @@ class GameViewController: UIViewController {
         sender.showsTouchWhenHighlighted = true
          
     if MyPlayerName == currentPlayer || MyPlayerName == "Tester" {
-        let die1 = Int.random(in: 0...5)
-        let die2 = Int.random(in: 0...5)
+        die1 = Int.random(in: 0...5)
+        die2 = Int.random(in: 0...5)
         self.playSound(sound: "dice")
     
         dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
@@ -106,8 +107,8 @@ class GameViewController: UIViewController {
             self.playerNameLabel.text = self.currentPlayer
             }
         }
-        
-        updateInteraction()
+      // Comented next line to reduce times feching Game interactions
+      //  updateInteraction()
         
     }
     
