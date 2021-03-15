@@ -111,7 +111,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U6u-yi-q6t" userLabel="LogoView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DiceeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5ZF-IH-QPZ">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" image="DiceeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5ZF-IH-QPZ">
                                                 <rect key="frame" x="89.5" y="16.5" width="196" height="128"/>
                                             </imageView>
                                         </subviews>
@@ -138,7 +138,7 @@
                                         <rect key="frame" x="0.0" y="324" width="375" height="161"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" placeholder="Nick name" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="xrQ-jP-Kun" userLabel="joinPlayerName">
-                                                <rect key="frame" x="116.5" y="61" width="142" height="39.5"/>
+                                                <rect key="frame" x="116.5" y="5" width="142" height="39.5"/>
                                                 <color key="tintColor" red="0.60594880579999999" green="0.11350636930000001" blue="0.1245979592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="7Id-fg-ONy"/>
@@ -148,8 +148,8 @@
                                             </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="xrQ-jP-Kun" firstAttribute="centerY" secondItem="Apd-pu-Zjo" secondAttribute="centerY" id="0Ip-a7-q64"/>
                                             <constraint firstItem="xrQ-jP-Kun" firstAttribute="centerX" secondItem="Apd-pu-Zjo" secondAttribute="centerX" id="74L-5I-7zN"/>
+                                            <constraint firstItem="xrQ-jP-Kun" firstAttribute="top" secondItem="Apd-pu-Zjo" secondAttribute="top" constant="5" id="jgo-oB-Ohf"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNE-BB-prp" userLabel="JoinView">
@@ -197,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pSb-Ju-9Yv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="213.04347826086959" y="139.95535714285714"/>
+            <point key="canvasLocation" x="212" y="139.880059970015"/>
         </scene>
         <!--NewRoomViewController-->
         <scene sceneID="p0f-gM-hak">
@@ -235,7 +235,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.60594880579999999" green="0.11350636930000001" blue="0.1245979592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go" textContentType="name"/>
                                             </textField>
                                         </subviews>
                                         <constraints>

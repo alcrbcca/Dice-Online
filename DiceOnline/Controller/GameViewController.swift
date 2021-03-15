@@ -57,7 +57,7 @@ class GameViewController: UIViewController {
         if sender.isOn {
             oneDie = false
             diceImageView2.isHidden = false
-            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
+            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "justChanged" : true, "date" : Date().timeIntervalSince1970 ]) { (error) in
                 
                 if let e = error {
                     print("Error writing to Game Interaction in FF \(e)")
@@ -69,7 +69,7 @@ class GameViewController: UIViewController {
         } else {
             oneDie = true
             diceImageView2.isHidden = true
-            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
+            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "justChanged" : true, "date" : Date().timeIntervalSince1970 ]) { (error) in
                 
                 if let e = error {
                     print("Error writing to Game Interaction in FF \(e)")
@@ -91,7 +91,7 @@ class GameViewController: UIViewController {
         die2 = Int.random(in: 0...5)
         self.playSound(sound: "dice")
     
-        dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "date" : Date().timeIntervalSince1970 ]) { (error) in
+        dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "justChanged" : false, "date" : Date().timeIntervalSince1970 ]) { (error) in
             
             if let e = error {
                 print("Error writing to Game Interaction in FF \(e)")
@@ -125,16 +125,16 @@ class GameViewController: UIViewController {
                         print("Game Interaction Data \(data)")
     //          Update dice Images:
                         
-                        if let die1FF = data["die1"] as? Int , let die2FF = data["die2"] as? Int, let oneDieTrueFF = data["oneDieTrue"] as? Bool {
+                        if let die1FF = data["die1"] as? Int , let die2FF = data["die2"] as? Int, let oneDieTrueFF = data["oneDieTrue"] as? Bool, let justChangedFF = data["justChanged"] as? Bool  {
                             // present random numbers for 1 sec
                        
                               for i in 0...4 {
                                   Timer.scheduledTimer(withTimeInterval: Double(i) * 0.25, repeats: false) {
                                       (nil) in
-                                    if !oneDieTrueFF {
+                                    if !justChangedFF {
                                         self.diceImageView1.image = self.allDice[Int.random(in: 0...5)]
+                                        self.diceImageView2.image = self.allDice[Int.random(in: 0...5)]
                                     }
-                                    self.diceImageView2.image = self.allDice[Int.random(in: 0...5)]
                                     if oneDieTrueFF {
                                         self.diceImageView2.isHidden = true
                                     } else {
