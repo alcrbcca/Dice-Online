@@ -77,7 +77,7 @@ class WatingRoomViewController: UIViewController {
     
     func prepPlayersOrder () {
         playersOrdered = []
-        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: finalRoomNumber ?? 1234).order(by: "date").getDocuments() {
+        dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: finalRoomNumber ?? 1).order(by: "date").getDocuments() {
             (queryS, error) in
             if let e = error {
                 print("Error retreiving data \(e)")

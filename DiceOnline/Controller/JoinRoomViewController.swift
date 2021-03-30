@@ -105,8 +105,8 @@ class JoinRoomViewController: UIViewController, UITextFieldDelegate {
                 print("Number of players in room = \(querySnapshot!.count)")
 
                 let numPlayersOfOneEntry : Int = querySnapshot!.documents[0].data()["NumPlayers",  default: Int()] as! Int
-
-                print("Num of Players of one entry in the list \(numPlayersOfOneEntry)")
+                    print("Num of Players of one entry in the list \(numPlayersOfOneEntry)")
+                
                     let confirmedNumberOfPlayers = numPlayersOfOneEntry
                     print("Confirmed Int of Players = \(confirmedNumberOfPlayers)")
                     numberOfPlayers = confirmedNumberOfPlayers

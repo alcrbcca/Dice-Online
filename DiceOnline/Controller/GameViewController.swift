@@ -26,6 +26,7 @@ class GameViewController: UIViewController {
     
     let dbFF = Firestore.firestore()
     let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix"),#imageLiteral(resourceName: "DiceeLogo")]
+    let colorForPayer = [UIColor.yellow,UIColor.green,UIColor.blue,UIColor.red,UIColor.purple,UIColor.orange]
     
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
@@ -183,6 +184,16 @@ class GameViewController: UIViewController {
                     
                     if self.currentPlayer == self.MyPlayerName {
                         self.playSound(sound: "C")
+                    }
+                    
+    // Asign color to player
+                    
+                    if let roomSize = self.PlayersOrdered?.count  {
+                        for entry in 0...roomSize - 1 {
+                            if self.currentPlayer == self.PlayersOrdered![entry] {
+                                self.playerNameLabel.backgroundColor = self.colorForPayer[entry]
+                                }
+                        }
                     }
                 
                 } else {
