@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
     var player: AVAudioPlayer!
     
     let dbFF = Firestore.firestore()
-    let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
+    let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix"),#imageLiteral(resourceName: "DiceeLogo")]
     
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
@@ -132,8 +132,8 @@ class GameViewController: UIViewController {
                                   Timer.scheduledTimer(withTimeInterval: Double(i) * 0.25, repeats: false) {
                                       (nil) in
                                     if !justChangedFF {
-                                        self.diceImageView1.image = self.allDice[Int.random(in: 0...5)]
-                                        self.diceImageView2.image = self.allDice[Int.random(in: 0...5)]
+                                        self.diceImageView1.image = self.allDice[Int.random(in: 0...6)]
+                                        self.diceImageView2.image = self.allDice[Int.random(in: 0...6)]
                                     }
                                     if oneDieTrueFF {
                                         self.diceImageView2.isHidden = true

@@ -639,43 +639,11 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDF-oR-Yhv" userLabel="Top Menu View">
-                                <rect key="frame" x="0.0" y="1" width="414" height="48"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="O67-jg-85t">
-                                        <rect key="frame" x="0.0" y="1" width="414" height="47"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGo-eh-kSh" userLabel="Left-Top-view">
-                                                <rect key="frame" x="0.0" y="0.0" width="132" height="47"/>
-                                                <color key="backgroundColor" systemColor="systemTealColor"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AX2-BE-CxG" userLabel="Middle-Top-view">
-                                                <rect key="frame" x="141" y="0.0" width="132" height="47"/>
-                                                <color key="backgroundColor" systemColor="systemTealColor"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sd4-5K-mJZ" userLabel="Right-Top-view">
-                                                <rect key="frame" x="282" y="0.0" width="132" height="47"/>
-                                                <color key="backgroundColor" systemColor="systemTealColor"/>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="O67-jg-85t" secondAttribute="bottom" id="E78-CE-g7Z"/>
-                                    <constraint firstItem="O67-jg-85t" firstAttribute="leading" secondItem="eDF-oR-Yhv" secondAttribute="leading" id="FI9-hN-edd"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="IiF-5T-Qsk"/>
-                                    <constraint firstAttribute="trailing" secondItem="O67-jg-85t" secondAttribute="trailing" id="Oxh-Tw-pQF"/>
-                                    <constraint firstAttribute="height" constant="48" id="i8H-3n-84W"/>
-                                    <constraint firstItem="O67-jg-85t" firstAttribute="top" secondItem="eDF-oR-Yhv" secondAttribute="top" constant="1" id="vjH-Zy-kmr"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="eDF-oR-Yhv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="1" id="4zn-Rq-SgI"/>
                             <constraint firstItem="xro-RH-hMv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7a9-VO-e4l"/>
-                            <constraint firstAttribute="trailing" secondItem="eDF-oR-Yhv" secondAttribute="trailing" id="8kB-Bj-y3L"/>
                             <constraint firstItem="2c1-Jl-5o8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fdq-mB-baL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2c1-Jl-5o8" secondAttribute="bottom" id="U9i-lP-Ai6"/>
                             <constraint firstItem="2c1-Jl-5o8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="b0q-pr-wc9"/>
@@ -683,7 +651,6 @@
                             <constraint firstItem="2c1-Jl-5o8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ofV-F6-Ydo"/>
                             <constraint firstAttribute="trailing" secondItem="xro-RH-hMv" secondAttribute="trailing" id="weG-LF-3lU"/>
                             <constraint firstAttribute="bottom" secondItem="xro-RH-hMv" secondAttribute="bottom" id="xY3-sG-5yK"/>
-                            <constraint firstItem="eDF-oR-Yhv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="y1z-om-adp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="821-bF-l6F"/>
@@ -720,9 +687,6 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
