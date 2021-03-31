@@ -244,7 +244,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.60594880579999999" green="0.11350636930000001" blue="0.1245979592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go" textContentType="name"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="go" textContentType="name"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -672,8 +672,8 @@
         <segue reference="b3d-zA-nGY"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="DiceOne" width="100" height="100"/>
-        <image name="DiceTwo" width="100" height="100"/>
+        <image name="DiceOne" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="DiceTwo" width="341.33334350585938" height="341.33334350585938"/>
         <image name="GreenBackground" width="444.66665649414062" height="414.33334350585938"/>
         <image name="Welcome-DiceOnline.png" width="768" height="768"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "dice3.png",
+      "filename" : "Dice3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dice3@2x.png",
+      "filename" : "Dice3-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "dice3@3x.png",
+      "filename" : "Dice3-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

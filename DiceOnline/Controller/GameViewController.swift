@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
     var player: AVAudioPlayer!
     
     let dbFF = Firestore.firestore()
-    let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix"),#imageLiteral(resourceName: "DiceeLogo")]
+    let allDice = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix"),#imageLiteral(resourceName: "Dice1-3.png"),#imageLiteral(resourceName: "Dice2-4.png"),#imageLiteral(resourceName: "Dice3-1.png"),#imageLiteral(resourceName: "Dice4-5.png"),#imageLiteral(resourceName: "Dice5-3.png"),#imageLiteral(resourceName: "Dice6-3.png")]
     let colorForPayer = [UIColor.yellow,UIColor.green,UIColor.blue,UIColor.red,UIColor.purple,UIColor.orange]
     
     @IBOutlet weak var diceImageView1: UIImageView!
@@ -127,14 +127,14 @@ class GameViewController: UIViewController {
     //          Update dice Images:
                         
                         if let die1FF = data["die1"] as? Int , let die2FF = data["die2"] as? Int, let oneDieTrueFF = data["oneDieTrue"] as? Bool, let justChangedFF = data["justChanged"] as? Bool  {
-                            // present random numbers for 1 sec
-                       
-                              for i in 0...4 {
+                            // present random numbers for 1.5 sec
+                            print("Number of images in allDice Array: \(self.allDice.count)")
+                              for i in 0...6 {
                                   Timer.scheduledTimer(withTimeInterval: Double(i) * 0.25, repeats: false) {
                                       (nil) in
                                     if !justChangedFF {
-                                        self.diceImageView1.image = self.allDice[Int.random(in: 0...6)]
-                                        self.diceImageView2.image = self.allDice[Int.random(in: 0...6)]
+                                        self.diceImageView1.image = self.allDice[Int.random(in: 0...11)]
+                                        self.diceImageView2.image = self.allDice[Int.random(in: 0...11)]
                                     }
                                     if oneDieTrueFF {
                                         self.diceImageView2.isHidden = true
@@ -144,7 +144,7 @@ class GameViewController: UIViewController {
                                   }
                               }
                          
-                            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) {
+                            Timer.scheduledTimer(withTimeInterval: 1.75, repeats: false) {
                                 (nil) in
                                 self.diceImageView1.image = self.allDice[die1FF]
                                 self.diceImageView2.image = self.allDice[die2FF]

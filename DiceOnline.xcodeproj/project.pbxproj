@@ -17,6 +17,12 @@
 		AD0C512922C6276D00AADC4D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AD0C512822C6276D00AADC4D /* README.md */; };
 		E80DEFB4261288B500C6D20D /* Welcome-DiceOnline.png in Resources */ = {isa = PBXBuildFile; fileRef = E80DEFB3261288B500C6D20D /* Welcome-DiceOnline.png */; };
 		E81A94A325C23F29009409AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81A94A225C23F29009409AD /* Constants.swift */; };
+		E83F1612261409AB00556065 /* Dice5-3.png in Resources */ = {isa = PBXBuildFile; fileRef = E83F160C261409A700556065 /* Dice5-3.png */; };
+		E83F1613261409AB00556065 /* Dice1-3.png in Resources */ = {isa = PBXBuildFile; fileRef = E83F160D261409A800556065 /* Dice1-3.png */; };
+		E83F1614261409AB00556065 /* Dice3-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E83F160E261409A800556065 /* Dice3-1.png */; };
+		E83F1615261409AB00556065 /* Dice2-4.png in Resources */ = {isa = PBXBuildFile; fileRef = E83F160F261409A900556065 /* Dice2-4.png */; };
+		E83F1616261409AB00556065 /* Dice4-5.png in Resources */ = {isa = PBXBuildFile; fileRef = E83F1610261409AA00556065 /* Dice4-5.png */; };
+		E83F1617261409AB00556065 /* Dice6-3.png in Resources */ = {isa = PBXBuildFile; fileRef = E83F1611261409AB00556065 /* Dice6-3.png */; };
 		E8427B5125BE142C00DA2AD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8427B5025BE142C00DA2AD5 /* GoogleService-Info.plist */; };
 		E8A3F72525BDEB4800B13511 /* DiceOnlineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F72425BDEB4800B13511 /* DiceOnlineModel.swift */; };
 		E8A3F72B25BDECCD00B13511 /* NewRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F72A25BDECCD00B13511 /* NewRoomViewController.swift */; };
@@ -48,6 +54,12 @@
 		AD0C512822C6276D00AADC4D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E80DEFB3261288B500C6D20D /* Welcome-DiceOnline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome-DiceOnline.png"; sourceTree = "<group>"; };
 		E81A94A225C23F29009409AD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E83F160C261409A700556065 /* Dice5-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dice5-3.png"; sourceTree = "<group>"; };
+		E83F160D261409A800556065 /* Dice1-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dice1-3.png"; sourceTree = "<group>"; };
+		E83F160E261409A800556065 /* Dice3-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dice3-1.png"; sourceTree = "<group>"; };
+		E83F160F261409A900556065 /* Dice2-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dice2-4.png"; sourceTree = "<group>"; };
+		E83F1610261409AA00556065 /* Dice4-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dice4-5.png"; sourceTree = "<group>"; };
+		E83F1611261409AB00556065 /* Dice6-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dice6-3.png"; sourceTree = "<group>"; };
 		E8427B5025BE142C00DA2AD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E8A3F72425BDEB4800B13511 /* DiceOnlineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceOnlineModel.swift; sourceTree = "<group>"; };
 		E8A3F72A25BDECCD00B13511 /* NewRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoomViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +134,12 @@
 				E8FC918525F86EDC0008FAF7 /* Sounds */,
 				E8A3F72725BDEB5500B13511 /* Model */,
 				AD0C511B22C623E700AADC4D /* Assets.xcassets */,
+				E83F160D261409A800556065 /* Dice1-3.png */,
+				E83F160F261409A900556065 /* Dice2-4.png */,
+				E83F160E261409A800556065 /* Dice3-1.png */,
+				E83F1610261409AA00556065 /* Dice4-5.png */,
+				E83F160C261409A700556065 /* Dice5-3.png */,
+				E83F1611261409AB00556065 /* Dice6-3.png */,
 				E80DEFB3261288B500C6D20D /* Welcome-DiceOnline.png */,
 				AD0C511D22C623E700AADC4D /* LaunchScreen.storyboard */,
 				AD0C512022C623E700AADC4D /* Info.plist */,
@@ -234,15 +252,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E83F1615261409AB00556065 /* Dice2-4.png in Resources */,
+				E83F1617261409AB00556065 /* Dice6-3.png in Resources */,
+				E83F1616261409AB00556065 /* Dice4-5.png in Resources */,
+				E83F1612261409AB00556065 /* Dice5-3.png in Resources */,
 				E8FC919225F86EDC0008FAF7 /* E.wav in Resources */,
 				E8C2993F25FD712700B591C3 /* dice.wav in Resources */,
 				E8FC918D25F86EDC0008FAF7 /* A.wav in Resources */,
+				E83F1613261409AB00556065 /* Dice1-3.png in Resources */,
 				AD0C511F22C623E700AADC4D /* LaunchScreen.storyboard in Resources */,
 				AD0C511C22C623E700AADC4D /* Assets.xcassets in Resources */,
 				E8FC919025F86EDC0008FAF7 /* F.wav in Resources */,
 				E8FC918F25F86EDC0008FAF7 /* B.wav in Resources */,
 				E8427B5125BE142C00DA2AD5 /* GoogleService-Info.plist in Resources */,
 				E8FC919125F86EDC0008FAF7 /* G.wav in Resources */,
+				E83F1614261409AB00556065 /* Dice3-1.png in Resources */,
 				AD0C512922C6276D00AADC4D /* README.md in Resources */,
 				E8FC919325F86EDC0008FAF7 /* D.wav in Resources */,
 				AD0C511A22C623E500AADC4D /* Main.storyboard in Resources */,
