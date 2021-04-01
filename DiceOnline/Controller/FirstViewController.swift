@@ -11,11 +11,13 @@ import Firebase
 
 class FirstViewController: UIViewController {
 
+    @IBOutlet weak var welcomeView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         FirebaseApp.configure()
         
-        
+        welcomeView.layer.cornerRadius = welcomeView.frame.size.height/10
         
     }
     
