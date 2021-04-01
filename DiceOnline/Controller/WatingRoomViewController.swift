@@ -83,10 +83,10 @@ class WatingRoomViewController: UIViewController {
                 print("Error retreiving data \(e)")
             } else {
                 if let list = queryS?.documents {
-   //                 print("Retreived docs : \(list.count)")
+                    print("Retreived list.count from gameRoom to create playersOrdered: \(list.count)")
                     for item in list {
                         let data = item.data()
-   //                     print("Data ' \(data)")
+                        print("Data of list of players for a player room \(data)")
                         if let name = data["PlayerName"] as? String {
                             self.playersOrdered.append(name)
                         }

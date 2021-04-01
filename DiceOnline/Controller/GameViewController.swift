@@ -47,6 +47,18 @@ class GameViewController: UIViewController {
         updateInteraction()
     }
     
+    override func becomeFirstResponder() -> Bool {
+        return true
+    }
+
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?){
+        if motion == .motionShake {
+            print("Shake Gesture Detected")
+            
+            roll()
+        }
+    }
+    
     func playSound(sound: String) {
         print("play a sound: \(sound) on my turn")
         let url = Bundle.main.url(forResource: sound, withExtension:  "wav" )
@@ -87,30 +99,32 @@ class GameViewController: UIViewController {
     
         sender.showsTouchWhenHighlighted = true
          
-    if MyPlayerName == currentPlayer || MyPlayerName == "Tester" {
-        die1 = Int.random(in: 0...5)
-        die2 = Int.random(in: 0...5)
-        self.playSound(sound: "dice")
+        roll()
+  
+    }
     
-        dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "justChanged" : false, "date" : Date().timeIntervalSince1970 ]) { (error) in
-            
-            if let e = error {
-                print("Error writing to Game Interaction in FF \(e)")
-            } else {
-              //  print("Successfully saved Game Interactio into FF")
-            }
-        }
-
-    } else {
-        playerNameLabel.text = "Not your turn"
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) {
-            (nil) in
-            self.playerNameLabel.text = self.currentPlayer
-            }
-        }
-      // Comented next line to reduce times feching Game interactions
-      //  updateInteraction()
+    func roll() {
+        if MyPlayerName == currentPlayer || MyPlayerName == "Tester" {
+            die1 = Int.random(in: 0...5)
+            die2 = Int.random(in: 0...5)
+            self.playSound(sound: "dice")
         
+            dbFF.collection(K.gameInteractionFF).addDocument(data:["RoomNumber" : self.RoomNumber , "PlayerName": self.MyPlayerName, "die1" : die1, "die2" : die2, "oneDieTrue" : self.oneDie, "justChanged" : false, "date" : Date().timeIntervalSince1970 ]) { (error) in
+                
+                if let e = error {
+                    print("Error writing to Game Interaction in FF \(e)")
+                } else {
+                  //  print("Successfully saved Game Interactio into FF")
+                }
+            }
+
+        } else {
+            playerNameLabel.text = "Not your turn"
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false) {
+                (nil) in
+                self.playerNameLabel.text = self.currentPlayer
+                }
+            }
     }
     
     func updateInteraction() {
@@ -239,11 +253,37 @@ class GameViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Yes", style:      UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
+            self.exitGameDeletingData()
             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         } ))
         
         self.present(alert, animated: true, completion: nil)
-        
+ 
+
+        }
+    func exitGameDeletingData() {
+        if MyPlayerName == PlayersOrdered![0] {
+            
+        print("Host or firt player exiting game and about to delete entry in FF")
+            
+            dbFF.collection(K.gameRoomFF).whereField("RoomNumber", isEqualTo: RoomNumber).getDocuments() { (listSnapshot, error) in
+                if let e = error {
+                    print("error geting listSnapshot of documents for RoomNumber: \(self.RoomNumber) error \(e) ")
+                } else {
+                    print("Documents for Room Number \(self.RoomNumber) sussecfully retreived")
+                    
+                    if let documentS = listSnapshot?.documents {
+     //                   print(documentS)
+                        for doc in documentS {
+                            print(doc.documentID)
+                            let docId = doc.documentID
+                            
+                            self.dbFF.collection(K.gameRoomFF).document(docId).delete()
+                            print(" Doc \(docId) deleted")
+                        }
+                    }
+                }
+            }
+        }
     }
-    
 }
