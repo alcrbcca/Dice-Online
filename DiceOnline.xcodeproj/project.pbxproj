@@ -33,10 +33,6 @@
 		E8FC918D25F86EDC0008FAF7 /* A.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8FC918625F86EDC0008FAF7 /* A.wav */; };
 		E8FC918E25F86EDC0008FAF7 /* C.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8FC918725F86EDC0008FAF7 /* C.wav */; };
 		E8FC918F25F86EDC0008FAF7 /* B.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8FC918825F86EDC0008FAF7 /* B.wav */; };
-		E8FC919025F86EDC0008FAF7 /* F.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8FC918925F86EDC0008FAF7 /* F.wav */; };
-		E8FC919125F86EDC0008FAF7 /* G.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8FC918A25F86EDC0008FAF7 /* G.wav */; };
-		E8FC919225F86EDC0008FAF7 /* E.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8FC918B25F86EDC0008FAF7 /* E.wav */; };
-		E8FC919325F86EDC0008FAF7 /* D.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8FC918C25F86EDC0008FAF7 /* D.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,10 +66,6 @@
 		E8FC918625F86EDC0008FAF7 /* A.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = A.wav; sourceTree = "<group>"; };
 		E8FC918725F86EDC0008FAF7 /* C.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = C.wav; sourceTree = "<group>"; };
 		E8FC918825F86EDC0008FAF7 /* B.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = B.wav; sourceTree = "<group>"; };
-		E8FC918925F86EDC0008FAF7 /* F.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = F.wav; sourceTree = "<group>"; };
-		E8FC918A25F86EDC0008FAF7 /* G.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G.wav; sourceTree = "<group>"; };
-		E8FC918B25F86EDC0008FAF7 /* E.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E.wav; sourceTree = "<group>"; };
-		E8FC918C25F86EDC0008FAF7 /* D.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,10 +176,6 @@
 				E8FC918725F86EDC0008FAF7 /* C.wav */,
 				E8FC918825F86EDC0008FAF7 /* B.wav */,
 				E8C2993E25FD712700B591C3 /* dice.wav */,
-				E8FC918925F86EDC0008FAF7 /* F.wav */,
-				E8FC918A25F86EDC0008FAF7 /* G.wav */,
-				E8FC918B25F86EDC0008FAF7 /* E.wav */,
-				E8FC918C25F86EDC0008FAF7 /* D.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -256,19 +244,15 @@
 				E83F1617261409AB00556065 /* Dice6-3.png in Resources */,
 				E83F1616261409AB00556065 /* Dice4-5.png in Resources */,
 				E83F1612261409AB00556065 /* Dice5-3.png in Resources */,
-				E8FC919225F86EDC0008FAF7 /* E.wav in Resources */,
 				E8C2993F25FD712700B591C3 /* dice.wav in Resources */,
 				E8FC918D25F86EDC0008FAF7 /* A.wav in Resources */,
 				E83F1613261409AB00556065 /* Dice1-3.png in Resources */,
 				AD0C511F22C623E700AADC4D /* LaunchScreen.storyboard in Resources */,
 				AD0C511C22C623E700AADC4D /* Assets.xcassets in Resources */,
-				E8FC919025F86EDC0008FAF7 /* F.wav in Resources */,
 				E8FC918F25F86EDC0008FAF7 /* B.wav in Resources */,
 				E8427B5125BE142C00DA2AD5 /* GoogleService-Info.plist in Resources */,
-				E8FC919125F86EDC0008FAF7 /* G.wav in Resources */,
 				E83F1614261409AB00556065 /* Dice3-1.png in Resources */,
 				AD0C512922C6276D00AADC4D /* README.md in Resources */,
-				E8FC919325F86EDC0008FAF7 /* D.wav in Resources */,
 				AD0C511A22C623E500AADC4D /* Main.storyboard in Resources */,
 				E80DEFB4261288B500C6D20D /* Welcome-DiceOnline.png in Resources */,
 				E8FC918E25F86EDC0008FAF7 /* C.wav in Resources */,
@@ -488,7 +472,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ca.alcrbc-dice-online";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -506,7 +490,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ca.alcrbc-dice-online";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
